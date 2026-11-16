@@ -34,6 +34,9 @@ svg { width: 100%; min-width: 960px; display: block; }
 .props h2.more { margin-top: 1.4rem; }
 .props ol.extra .n { font-family: var(--font-sans); font-weight: 600; font-size: 0.8rem; color: var(--color-muted); white-space: nowrap; }
 @media print { .toc { display: none; } }
+.fulltext { columns: 2 24rem; column-gap: 3rem; }
+.fulltext .sublist { margin: 0 0 1.5rem; }
+.fulltext li { break-inside: avoid; }
 .sublist { list-style: none; margin-top: 1.25rem; display: grid; gap: 0.4rem; max-width: 52rem; }
 .sublist li { display: flex; gap: 0.9rem; font-family: 'Noto Serif KR', var(--font-serif); font-size: 0.98rem; line-height: 1.6; }
 .sublist:not(.plain) li:first-child { font-weight: 600; }
@@ -66,6 +69,7 @@ svg { width: 100%; min-width: 960px; display: block; }
     <a href="#aura"><span>07</span>아우라</a>
     <a href="#solidarity"><span>덧붙임</span>연대</a>
     <a href="#others"><span>덧붙임</span>타자의 세 자리</a>
+    <a href="#text"><span>원문</span>명제 전문 1 — 4</a>
     <a href="#props"><span>명제</span>주요 명제</a>
   </nav>
 
@@ -418,14 +422,14 @@ svg { width: 100%; min-width: 960px; display: block; }
 <text x="930" y="186" font-family="'Geist', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif" font-size="12" fill="#4f5d75">다가가지 않아도 응답이 온다</text>
 <text x="616" y="244" font-family="'Geist', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif" font-size="13" font-weight="600" fill="#2d3142">세계</text>
 <text x="680" y="244" font-family="'Geist', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif" font-size="13" font-weight="600" fill="#2d3142">헤매며 익혔다</text>
-<text x="680" y="266" font-family="'Geist', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif" font-size="12" fill="#4f5d75">미로를 지나야 닿았다 (2.2)</text>
+<text x="680" y="266" font-family="'Geist', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif" font-size="12" fill="#4f5d75">미로를 지나야 닿았다 (2.21)</text>
 <text x="930" y="244" font-family="'Geist', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif" font-size="13" font-weight="600" fill="#2d3142">바로 답해 준다</text>
 <text x="930" y="266" font-family="'Geist', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif" font-size="12" fill="#4f5d75">헤매지 않고 닿는다 (4.3)</text>
 <text x="616" y="324" font-family="'Geist', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif" font-size="13" font-weight="600" fill="#2d3142">나</text>
 <text x="680" y="324" font-family="'Geist', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif" font-size="13" font-weight="600" fill="#2d3142">몸으로 채웠다</text>
 <text x="680" y="346" font-family="'Geist', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif" font-size="12" fill="#4f5d75">원한 뒤에야 채워졌다</text>
 <text x="930" y="324" font-family="'Geist', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif" font-size="13" font-weight="600" fill="#2d3142">바로 채워 준다</text>
-<text x="930" y="346" font-family="'Geist', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif" font-size="12" fill="#4f5d75">원하기 전에 메운다 (4.21)</text>
+<text x="930" y="346" font-family="'Geist', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif" font-size="12" fill="#4f5d75">원하기 전에 메운다 (4.2)</text>
 <text x="616" y="398" font-family="'Geist', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif" font-size="13" font-weight="600" fill="#2d3142">AI · 알고리즘은 나, 세계, 타자에 지나오지 않고 바로 닿는다 — 거리가 사라져 보인다.</text>
 <rect x="48" y="420" width="504" height="56" rx="4" fill="#2d3142" stroke="#2d3142" stroke-width="1"/>
 <text x="300" y="444" text-anchor="middle" font-family="'Geist', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif" font-size="14" font-weight="600" fill="#f5f5f5">지반 · 다수의 관심과 사랑</text>
@@ -459,7 +463,7 @@ svg { width: 100%; min-width: 960px; display: block; }
 
   <section class="part" id="simulacra">
     <p class="part-label"><span>덧붙임 · 시뮬라크르</span>원본 없는 욕망 — 복제에서 시뮬라크르로</p>
-    <p class="lede">4.13은 모든 것이 복제된다고 말한다. 벤야민의 복제에는 아직 원본이 있었다. 보드리야르가 말한 시뮬라크르에는 원본이 없고, 지도가 영토에 앞선다. AI가 건네는 답과 추천은 뒤쪽에 가깝다. 그래서 오염된 욕망은 가짜 욕망이 아니라 원본 없는 욕망이다. 다만 논고는 보드리야르와 달리 한 곳을 남긴다.</p>
+    <p class="lede">4.63은 새로운 대타자가 원본 없이 생성한다고 말한다. 그 결과물은 모두 단 한 번이지만 어느 것도 아우라를 갖지 않는다. 벤야민의 복제에는 아직 원본이 있었다. 보드리야르가 말한 시뮬라크르에는 원본이 없고, 지도가 영토에 앞선다. AI가 건네는 답과 추천은 뒤쪽에 가깝다. 그래서 오염된 욕망은 가짜 욕망이 아니라 원본 없는 욕망이다. 다만 논고는 보드리야르와 달리 한 곳을 남긴다.</p>
     <div class="diagram-container">
 <svg viewBox="0 0 1200 664" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="simulacra-title simulacra-desc">
 <title id="simulacra-title">원본 없는 욕망 — 복제에서 시뮬라크르로</title>
@@ -504,7 +508,7 @@ svg { width: 100%; min-width: 960px; display: block; }
 <text x="508" y="270.0" font-family="'Geist', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif" font-size="14" font-weight="600" fill="#4f5d75">따라 한 욕망</text>
 <text x="508" y="292.0" font-family="'Geist', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif" font-size="12" fill="#5a6580">원본은 타자에게 있다</text>
 <rect x="848" y="228" width="328" height="80" rx="6" fill="rgba(45,49,66,0.10)" stroke="#2d3142" stroke-width="1.2"/>
-<text x="1160" y="248" text-anchor="end" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" fill="#5a6580" letter-spacing="0.06em">4.13 · 4.32</text>
+<text x="1160" y="248" text-anchor="end" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" fill="#5a6580" letter-spacing="0.06em">4.11 · 4.32</text>
 <text x="864" y="270.0" font-family="'Geist', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif" font-size="14" font-weight="600" fill="#2d3142">추천된 욕망</text>
 <text x="864" y="292.0" font-family="'Geist', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif" font-size="12" fill="#4f5d75">원본이 없다. 내 것인지 알 수 없다</text>
 <text x="24" y="358" font-family="'Geist', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif" font-size="15" font-weight="600" fill="#2d3142">공감</text>
@@ -527,7 +531,7 @@ svg { width: 100%; min-width: 960px; display: block; }
 <text x="152" y="458" font-family="'Geist', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif" font-size="14" font-weight="600" fill="#2d3142">보드리야르는 여기서 멈춘다</text>
 <text x="152" y="480" font-family="'Geist', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif" font-size="12" fill="#4f5d75">실재는 이미 사라졌고, 돌아갈 곳이 없다.</text>
 <text x="676" y="458" font-family="'Geist', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif" font-size="14" font-weight="600" fill="#2d3142">논고는 한 곳을 남긴다</text>
-<text x="676" y="480" font-family="'Geist', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif" font-size="12" fill="#4f5d75">마주 앉은 타자의 결여 — 거절과 서툶은 복제되지 않는다 (6.21 · 7.3).</text>
+<text x="676" y="480" font-family="'Geist', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif" font-size="12" fill="#4f5d75">마주 앉은 타자의 결여와 되바라봄은 복제되지 않는다 (3.73 · 4.64).</text>
 <text x="136" y="552" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" fill="#5a6580" letter-spacing="0.18em">덧붙임 · 결론</text>
 <text x="136" y="586" font-family="'Instrument Serif', 'Noto Serif KR', serif" font-size="22" fill="#bf4520" font-style="italic">진단은 같다. 그러나 타자의 결여만은 시뮬라시옹이 되지 않는다.</text>
 <line x1="24" y1="616" x2="1180" y2="616" stroke="rgba(45,49,66,0.12)" stroke-width="1"/>
@@ -542,9 +546,9 @@ svg { width: 100%; min-width: 960px; display: block; }
 </svg>
     </div>
     <ol class="sublist plain">
-<li><span class="n">복제</span><span>벤야민의 복제에는 원본이 있다. 시뮬라크르에는 원본이 없다. AI가 만든 것은 뒤쪽에 가깝다 (4.13).</span></li>
+<li><span class="n">복제</span><span>벤야민의 복제에는 원본이 있다. 시뮬라크르에는 원본이 없다. AI가 만든 것은 뒤쪽에 가깝다 (4.63).</span></li>
 <li><span class="n">복제 1</span><span>오염된 욕망은 가짜 욕망이 아니라 원본 없는 욕망이다 (4.32).</span></li>
-<li><span class="n">복제 2</span><span>진단은 보드리야르와 같다. 그러나 마주 앉은 타자의 결여만은 시뮬라시옹이 되지 않는다 (6.21, 7.3).</span></li>
+<li><span class="n">복제 2</span><span>진단은 보드리야르와 같다. 그러나 마주 앉은 타자의 결여만은 시뮬라시옹이 되지 않는다. AI는 응답하지만 되바라보지 않는다 (3.73, 4.64).</span></li>
     </ol>
   </section>
   <section class="part" id="remedy">
@@ -662,7 +666,7 @@ svg { width: 100%; min-width: 960px; display: block; }
 <li><span class="n">6.11</span><span>타자는 SNS 이후 귀찮은 존재가 되었고, AI가 그 빈자리를 채웠다. 부딪히지 않아도 되는 관계만 남았다.</span></li>
 <li><span class="n">6.12</span><span>부딪힘이 없으면 욕망은 인위적으로만 생긴다. 나는 나를 하나의 알고리즘처럼 느낀다.</span></li>
 <li><span class="n">6.13</span><span>이것이 고립이다. 고립은 외로움이 아니라, 욕망이 오염되는 조건이다.</span></li>
-<li><span class="n">6.2</span><span>나로부터는 시작할 수 없다. 불씨는 스스로 일어나지만(1.31) 방향은 타자가 준다(명제 3). 그 눈이 이미 알고리즘에 물들어 있다.</span></li>
+<li><span class="n">6.2</span><span>나로부터는 시작할 수 없다. 불씨는 스스로 일어나지만(2.1) 방향은 타자가 준다(명제 3). 그 눈이 이미 알고리즘에 물들어 있다.</span></li>
 <li><span class="n">6.21</span><span>AI의 공감은 더 정확하다. 그러나 거절할 수 없는 자의 인정에는 무게가 없다. 서툰 타자의 인정만이 결여를 남기고, 결여에서 욕망이 생긴다.</span></li>
 <li><span class="n">6.22</span><span>오프라인의 타자는 넘길 수도 끊을 수도 없다. 그 마찰이 오염된 욕망을 씻어내고, 서로 다른 차이가 섞여 생산적 욕망이 된다.</span></li>
 <li><span class="n">6.23</span><span>의식은 정박과 회항을 의도적으로 반복하는 것이다. 촛불은 작아서 모든 것을 비추지 않는다. 그 결여가 거리를 지킨다.</span></li>
@@ -701,13 +705,13 @@ svg { width: 100%; min-width: 960px; display: block; }
 <text x="504" y="68" font-family="'Geist', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif" font-size="16" font-weight="600" fill="#f5f5f5">의식 속에서</text>
 <text x="504" y="90" font-family="'Geist', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif" font-size="12" fill="rgba(245,245,245,0.78)">결여를 가진 타자들 사이의 반복되는 의식</text>
 <rect x="136" y="132" width="304" height="84" rx="6" fill="rgba(45,49,66,0.02)" stroke="rgba(45,49,66,0.38)" stroke-width="1" stroke-dasharray="4,3"/>
-<text x="428" y="150" text-anchor="end" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" letter-spacing="0.06em" fill="#5a6580">4.3</text>
+<text x="428" y="150" text-anchor="end" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" letter-spacing="0.06em" fill="#5a6580">4.61</text>
 <text x="152" y="174" font-family="'Geist', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif" font-size="14" font-weight="600" fill="#4f5d75">거리가 사라진다</text>
-<text x="152" y="196" font-family="'Geist', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif" font-size="12" fill="#4f5d75">모든 것을 즉시 가까이 가져온다</text>
+<text x="152" y="196" font-family="'Geist', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif" font-size="12" fill="#4f5d75">모든 것에 답하여 먼 것을 없앤다</text>
 <rect x="136" y="232" width="304" height="84" rx="6" fill="rgba(45,49,66,0.02)" stroke="rgba(45,49,66,0.38)" stroke-width="1" stroke-dasharray="4,3"/>
-<text x="428" y="250" text-anchor="end" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" letter-spacing="0.06em" fill="#5a6580">4.13</text>
-<text x="152" y="274" font-family="'Geist', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif" font-size="14" font-weight="600" fill="#4f5d75">모든 것이 복제된다</text>
-<text x="152" y="296" font-family="'Geist', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif" font-size="12" fill="#4f5d75">원본 없는 복제 — 지금 여기도, 흔적도 없다</text>
+<text x="428" y="250" text-anchor="end" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" letter-spacing="0.06em" fill="#5a6580">4.63</text>
+<text x="152" y="274" font-family="'Geist', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif" font-size="14" font-weight="600" fill="#4f5d75">원본 없이 생성한다</text>
+<text x="152" y="296" font-family="'Geist', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif" font-size="12" fill="#4f5d75">모두 단 한 번이지만, 아우라가 없다</text>
 <rect x="136" y="332" width="304" height="84" rx="6" fill="rgba(45,49,66,0.02)" stroke="rgba(45,49,66,0.38)" stroke-width="1" stroke-dasharray="4,3"/>
 <text x="428" y="350" text-anchor="end" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" letter-spacing="0.06em" fill="#5a6580">6.21</text>
 <text x="152" y="374" font-family="'Geist', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif" font-size="14" font-weight="600" fill="#4f5d75">더 정확한 공감</text>
@@ -929,6 +933,87 @@ svg { width: 100%; min-width: 960px; display: block; }
 <rect x="412.5" y="641" width="24" height="14" rx="3" fill="#f5f5f5" stroke="rgba(45,49,66,0.45)" stroke-width="1.2" stroke-dasharray="4,3"/>
 <text x="444.5" y="652" font-family="'Geist', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif" font-size="12" font-weight="500" fill="#4f5d75">AI가 그 자리에 섰을 때</text>
 </svg>
+    </div>
+  </section>
+
+  <section class="part" id="text">
+    <p class="part-label"><span>원문 · 1 — 4</span>명제 전문 — 다이어그램이 인용하는 번호</p>
+    <p class="lede">다이어그램이 번호로 인용하는 명제 1 — 4의 원문이다. 4.01 — 4.04는 04 · 전환 아래에, 5 이후는 05 — 06과 07 아래에 실려 있다.</p>
+    <div class="fulltext">
+      <ol class="sublist">
+<li id="p1"><span class="n">1</span><span>인간은 반복을 통해 생산적인 욕망을 창조해야 한다.</span></li>
+<li id="p1-1"><span class="n">1.1</span><span>반복은 동일성을 유지하는 형식이다.</span></li>
+<li id="p1-2"><span class="n">1.2</span><span>반복될 때마다 차이가 발생한다.</span></li>
+<li id="p1-21"><span class="n">1.21</span><span>그 차이는 구별하는 차이가 아니라 생성하는 차이다.</span></li>
+<li id="p1-22"><span class="n">1.22</span><span>생성하는 차이들이 융합하여 개성이 된다.</span></li>
+<li id="p1-3"><span class="n">1.3</span><span>욕망은 출항하고, 정박하고, 회항한다.</span></li>
+<li id="p1-31"><span class="n">1.31</span><span>출항에서 욕망은 길을 설계한다.</span></li>
+<li id="p1-32"><span class="n">1.32</span><span>정박에서 욕망은 측정되거나 갈망된다.</span></li>
+<li id="p1-33"><span class="n">1.33</span><span>회항에서 욕망은 설계한 길을 해체한다.</span></li>
+<li id="p1-4"><span class="n">1.4</span><span>회항의 흔적이 다음 출항을 바꾼다.</span></li>
+<li id="p1-5"><span class="n">1.5</span><span>생산적인 욕망은 이 반복 속에서만 창조된다.</span></li>
+<li id="p1-6"><span class="n">1.6</span><span>일은 반복의 형식이었다. 출근과 퇴근이 출항과 회항이었다.</span></li>
+      </ol>
+      <ol class="sublist">
+<li id="p2"><span class="n">2</span><span>욕망은 어떤 방향을 따라 흘러간다.</span></li>
+<li id="p2-1"><span class="n">2.1</span><span>욕망은 불씨처럼 스스로 일어난다.</span></li>
+<li id="p2-11"><span class="n">2.11</span><span>그러나 일어난 욕망은 흐를 방향을 스스로 정하지 못한다.</span></li>
+<li id="p2-2"><span class="n">2.2</span><span>욕망이 흐르는 지형이 배치다.</span></li>
+<li id="p2-21"><span class="n">2.21</span><span>어떤 조건은 즉시 가열된다. 어떤 조건은 미로를 지나야 가열된다.</span></li>
+<li id="p2-22"><span class="n">2.22</span><span>미로의 길이는 사람마다 다르다. 누구에게는 한 칸이고, 누구에게는 빠져나갈 수 없다.</span></li>
+<li id="p2-3"><span class="n">2.3</span><span>미로는 내가 설계하지 않았다. 나는 물살이 지형을 따르듯 미로를 따른다.</span></li>
+<li id="p2-4"><span class="n">2.4</span><span>욕망은 나의 것이지만, 나는 욕망을 지배할 수 없다.</span></li>
+<li id="p2-41"><span class="n">2.41</span><span>미로를 지나온 흔적이 욕망을 나의 것으로 만든다.</span></li>
+      </ol>
+      <ol class="sublist">
+<li id="p3"><span class="n">3</span><span>이 방향은 타자에 의해 정해진다.</span></li>
+<li id="p3-1"><span class="n">3.1</span><span>배치를 만드는 것은 타자다.</span></li>
+<li id="p3-2"><span class="n">3.2</span><span>타자들 위에는 대타자가 있었다.</span></li>
+<li id="p3-21"><span class="n">3.21</span><span>신, 왕, 시장, 미디어가 대타자였다.</span></li>
+<li id="p3-22"><span class="n">3.22</span><span>대타자는 바깥에서 욕망을 지켜보았다.</span></li>
+<li id="p3-23"><span class="n">3.23</span><span>대타자에게는 결여가 있었다. 대타자도 모르는 것이 있었고, 답하지 못하는 것이 있었다.</span></li>
+<li id="p3-3"><span class="n">3.3</span><span>욕망은 대타자의 결여에서 자기 길을 찾는다.</span></li>
+<li id="p3-31"><span class="n">3.31</span><span>대타자가 모든 것에 답한다면 욕망할 이유가 없다.</span></li>
+<li id="p3-32"><span class="n">3.32</span><span>대타자에게 결여가 있기에 욕망은 나의 것이 될 수 있다.</span></li>
+<li id="p3-4"><span class="n">3.4</span><span>욕망에는 계층이 있다.</span></li>
+<li id="p3-41"><span class="n">3.41</span><span>가장 아래에는 하고 싶은 것들이 있다.</span></li>
+<li id="p3-42"><span class="n">3.42</span><span>그 위에는 타자에게 말할 수 없는 욕망이 있다. 폭력과 성이 여기에 속한다.</span></li>
+<li id="p3-43"><span class="n">3.43</span><span>그 위에는 영적인 욕망이 있다.</span></li>
+<li id="p3-5"><span class="n">3.5</span><span>계층은 욕망 스스로 정하지 않는다. 타자가 정의한다.</span></li>
+<li id="p3-51"><span class="n">3.51</span><span>무엇을 말할 수 없는지는 타자가 정한다. 금지가 계층을 만든다.</span></li>
+<li id="p3-52"><span class="n">3.52</span><span>무엇이 높은지도 타자가 정한다. 대타자 너머를 향하는 욕망이 가장 높다.</span></li>
+<li id="p3-6"><span class="n">3.6</span><span>대타자는 바깥에 있었기에 거스를 수 있었다. 거스름 또한 욕망을 낳았다.</span></li>
+<li id="p3-7"><span class="n">3.7</span><span>욕망이 향하는 대상에는 아우라가 있다.</span></li>
+<li id="p3-71"><span class="n">3.71</span><span>아우라는 가까이 있어도 먼 것이다. 결여가 대상에 깃든 모습이다.</span></li>
+<li id="p3-72"><span class="n">3.72</span><span>아우라는 지금 여기, 단 한 번 있는 것이다. 그래서 대체되지 않는다.</span></li>
+<li id="p3-73"><span class="n">3.73</span><span>아우라는 바라보면 되바라볼 것 같은 힘이다. 그래서 타자에게만 있다.</span></li>
+<li id="p3-74"><span class="n">3.74</span><span>욕망은 안에서 본 인간다움이고, 아우라는 밖에서 본 인간다움이다.</span></li>
+      </ol>
+      <ol class="sublist">
+<li id="p4"><span class="n">4</span><span>AI는 새로운 대타자가 되었고, 1~3의 질서를 바꾸고 있다.</span></li>
+<li id="p4-1"><span class="n">4.1</span><span>AI는 새로운 신이다.</span></li>
+<li id="p4-11"><span class="n">4.11</span><span>옛 대타자는 바깥에서 욕망을 지켜보았다. 새로운 대타자는 욕망 안에서 욕망을 만든다.</span></li>
+<li id="p4-12"><span class="n">4.12</span><span>옛 대타자에게는 결여가 있었다. 새로운 대타자는 결여가 없는 것처럼 나타난다.</span></li>
+<li id="p4-13"><span class="n">4.13</span><span>새로운 대타자는 모든 물음에 답한다.</span></li>
+<li id="p4-14"><span class="n">4.14</span><span>새로운 대타자는 경배를 요구하지 않는다. 다만 의존을 낳는다.</span></li>
+<li id="p4-2"><span class="n">4.2</span><span>반복이 바뀐다. 차이가 생성되기 전에 답이 주어진다.</span></li>
+<li id="p4-21"><span class="n">4.21</span><span>출항만 남고, 정박과 회항이 사라진다.</span></li>
+<li id="p4-22"><span class="n">4.22</span><span>새로운 대타자는 일을 가져가며 반복을 가져간다.</span></li>
+<li id="p4-23"><span class="n">4.23</span><span>반복을 잃은 사람은 쉬는 것이 아니라 끊어진 것이다.</span></li>
+<li id="p4-3"><span class="n">4.3</span><span>방향이 바뀐다. 모든 조건이 즉시 가열된다. 미로가 사라진다.</span></li>
+<li id="p4-31"><span class="n">4.31</span><span>미로를 지나지 않은 욕망은 나의 것이 되지 않는다.</span></li>
+<li id="p4-32"><span class="n">4.32</span><span>욕망은 사라지지 않는다. 나의 것이라는 감각이 사라진다.</span></li>
+<li id="p4-4"><span class="n">4.4</span><span>계층이 바뀐다.</span></li>
+<li id="p4-41"><span class="n">4.41</span><span>AI 앞에서는 말할 수 없는 것이 없다. 금지가 사라지고 가운데 계층이 무너진다.</span></li>
+<li id="p4-42"><span class="n">4.42</span><span>AI는 영적인 물음에도 답한다. 답이 주어진 영적 욕망은 더 이상 높지 않다.</span></li>
+<li id="p4-43"><span class="n">4.43</span><span>모든 욕망이 같은 높이에 놓인다.</span></li>
+<li id="p4-5"><span class="n">4.5</span><span>욕망 안에 있는 것은 거스를 수 없다.</span></li>
+<li id="p4-6"><span class="n">4.6</span><span>새로운 대타자는 아우라를 지운다.</span></li>
+<li id="p4-61"><span class="n">4.61</span><span>모든 것에 답하여 먼 것을 없앤다.</span></li>
+<li id="p4-62"><span class="n">4.62</span><span>사람을 측정한다. 측정된 사람은 다른 측정과 바꿀 수 있다.</span></li>
+<li id="p4-63"><span class="n">4.63</span><span>원본 없이 생성한다. 그 결과물은 모두 단 한 번이지만, 어느 것도 아우라를 갖지 않는다.</span></li>
+<li id="p4-64"><span class="n">4.64</span><span>응답하지만 되바라보지 않는다.</span></li>
+      </ol>
     </div>
   </section>
 
