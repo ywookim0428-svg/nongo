@@ -1,0 +1,592 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>요즘 뭐가 갖고 싶어요? — 진행 대본</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Noto+Sans+KR:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f5f5f5;
+    --card: #ffffff;
+    --ink: #2d3142;
+    --muted: #4f5d75;
+    --soft: #5a6580;
+    --rule: rgba(45,49,66,0.14);
+    --accent: #bf4520;
+    --accent-tint: rgba(191,69,32,0.07);
+    --kr: 'Geist', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+    --mono: 'Geist Mono', ui-monospace, monospace;
+    --serif: 'Instrument Serif', 'Noto Serif KR', serif;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--kr); font-size: 16px; line-height: 1.75; word-break: keep-all; }
+  .wrap { max-width: 820px; margin: 0 auto; padding: 56px 24px 96px; }
+  .eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--soft); margin: 0 0 12px; }
+  h1 { font-family: var(--serif); font-weight: 400; font-size: 44px; line-height: 1.2; margin: 0 0 16px; }
+  .lede { color: var(--muted); font-size: 17px; margin: 0 0 32px; }
+
+  .toc { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 6px 24px; padding: 20px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); margin-bottom: 40px; }
+  .toc a { color: var(--ink); text-decoration: none; font-size: 15px; }
+  .toc a:hover { color: var(--accent); }
+  .toc a span { font-family: var(--mono); font-size: 12px; color: var(--soft); margin-right: 10px; }
+
+  .box { background: var(--card); border: 1px solid var(--rule); border-radius: 6px; padding: 24px 28px; margin: 0 0 24px; }
+  .box h2 { font-size: 18px; font-weight: 600; margin: 0 0 12px; }
+  .flow { list-style: none; padding: 0; margin: 0; }
+  .flow li { display: grid; grid-template-columns: 64px 1fr; gap: 12px; padding: 8px 0; border-top: 1px solid var(--rule); }
+  .flow li:first-child { border-top: none; }
+  .flow .t { font-family: var(--mono); font-size: 12px; color: var(--soft); padding-top: 4px; }
+  .rules { margin: 0; padding-left: 20px; }
+  .rules li { margin: 4px 0; }
+
+  section.session { padding-top: 48px; margin-top: 48px; border-top: 1px solid var(--rule); scroll-margin-top: 16px; }
+  .num { font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em; color: var(--soft); margin: 0 0 6px; }
+  section.session h2 { font-size: 26px; font-weight: 600; line-height: 1.35; margin: 0 0 6px; }
+  .see { color: var(--muted); margin: 0 0 24px; font-size: 15px; }
+  .see b { color: var(--ink); font-weight: 500; }
+
+  .step { margin: 0 0 28px; }
+  .step h3 { display: flex; align-items: baseline; gap: 10px; font-size: 15px; font-weight: 600; margin: 0 0 10px; }
+  .step h3 .t { font-family: var(--mono); font-size: 11px; font-weight: 400; color: var(--soft); letter-spacing: 0.06em; }
+  .say { background: var(--card); border-left: 3px solid var(--ink); border-radius: 0 6px 6px 0; padding: 14px 20px; margin: 0 0 10px; }
+  .say p { margin: 0 0 8px; }
+  .say p:last-child { margin: 0; }
+  .say::before { content: "진행자"; display: block; font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; color: var(--soft); margin-bottom: 6px; }
+  .do { color: var(--muted); font-size: 15px; margin: 0 0 10px; }
+  .do::before { content: "→ "; color: var(--soft); }
+  ol.q { margin: 0; padding-left: 0; list-style: none; counter-reset: q; }
+  ol.q > li { counter-increment: q; background: var(--card); border: 1px solid var(--rule); border-radius: 6px; padding: 14px 20px 14px 52px; margin: 0 0 10px; position: relative; }
+  ol.q > li::before { content: counter(q); position: absolute; left: 20px; top: 14px; font-family: var(--mono); font-size: 13px; color: var(--soft); }
+  ol.q .tip { display: block; color: var(--soft); font-size: 14px; margin-top: 6px; }
+  ol.q .tip::before { content: "팁 · "; font-family: var(--mono); font-size: 11px; }
+  .one { background: var(--accent-tint); border: 1px solid var(--accent); border-radius: 6px; padding: 16px 20px; }
+  .one .lbl { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; color: var(--accent); display: block; margin-bottom: 4px; }
+  .one p { margin: 0; font-family: var(--serif); font-style: italic; font-size: 22px; line-height: 1.4; }
+
+  .home { margin: -16px 0 32px; font-size: 14px; }
+  .home a, .back a { color: var(--soft); text-decoration: none; }
+  .home a:hover, .back a:hover { color: var(--accent); }
+
+  .board { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 28px 24px; padding: 8px 4px 16px; }
+  .note { position: relative; display: flex; flex-direction: column; gap: 8px; min-height: 196px; padding: 28px 20px 20px; color: var(--ink); text-decoration: none; border-radius: 2px; box-shadow: 0 1px 2px rgba(45,49,66,0.10), 0 8px 16px -8px rgba(45,49,66,0.22); transition: transform .15s ease; }
+  .note:nth-child(odd) { transform: rotate(-1.4deg); }
+  .note:nth-child(even) { transform: rotate(1.2deg); }
+  .note:nth-child(3n) { transform: rotate(-0.6deg); }
+  .note:hover, .note:focus-visible { transform: rotate(0) translateY(-3px); outline: none; }
+  .note .pin { position: absolute; top: -6px; left: 50%; width: 56px; height: 16px; margin-left: -28px; background: rgba(255,255,255,0.55); border: 1px solid rgba(45,49,66,0.08); }
+  .note .nn { font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; color: var(--soft); }
+  .note b { font-size: 18px; font-weight: 600; line-height: 1.4; }
+  .note .nm { margin-top: auto; font-size: 13px; color: var(--muted); }
+  .n0 { background: #ffffff; }
+  .n1 { background: #fff1a8; }
+  .n2 { background: #ffd9cc; }
+  .n3 { background: #d8eedb; }
+  .n4 { background: #d9e6f7; }
+
+  .back { display: flex; justify-content: space-between; gap: 12px; font-size: 14px; margin: 0 0 24px; }
+  .pager { display: flex; justify-content: space-between; gap: 12px; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--rule); font-size: 15px; }
+  .pager a { color: var(--ink); text-decoration: none; }
+  .pager a:hover { color: var(--accent); }
+
+  .js section.session { display: none; border-top: none; margin-top: 0; padding-top: 8px; }
+  .js section.session.on { display: block; }
+  .js.detail .board, .js.detail .lede, .js.detail h1, .js.detail .eyebrow, .js.detail .home { display: none; }
+
+  footer { margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--rule); color: var(--soft); font-size: 14px; }
+
+  @media (max-width: 600px) {
+    h1 { font-size: 34px; }
+    .board { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 20px 14px; }
+    .note { min-height: 168px; padding: 24px 14px 14px; }
+    .note b { font-size: 16px; }
+    .box { padding: 20px; }
+    .flow li { grid-template-columns: 52px 1fr; }
+  }
+  @media print {
+    body { background: #fff; font-size: 13px; }
+    .board, .back, .pager, .home { display: none !important; }
+    .js section.session { display: block; }
+    section.session { page-break-before: always; border-top: none; margin-top: 0; }
+    .say, ol.q > li, .box { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="eyebrow">독서모임 · 진행자용 대본 · 8회</p>
+  <h1>요즘 뭐가 갖고 싶어요?</h1>
+  <p class="lede">원하는 걸 같이 이야기하는 여덟 번의 모임이에요. 진행자가 그대로 읽어도 되도록 썼고, 자기 말투로 바꿔 말하면 더 좋아요. 한 번에 90분을 기준으로 잡았어요. 포스트잇을 눌러 회차별 대본을 열어 보세요.</p>
+  <p class="home"><a href="논고-다이어그램.html">← 논고로 돌아가기</a></p>
+
+  <div class="board" id="board">
+    <a class="note n0" href="#intro"><span class="pin"></span><span class="nn">시작 전에</span><b>모임을 여는 법</b><span class="nm">매번 같은 순서와 약속 세 가지</span></a>
+    <a class="note n1" href="#s1"><span class="pin"></span><span class="nn">01</span><b>노력하면 되는 것, 안 되는 것</b><span class="nm">『미움받을 용기』</span></a>
+    <a class="note n2" href="#s2"><span class="pin"></span><span class="nn">02</span><b>그거, 진짜 내가 원한 걸까</b><span class="nm">『너 자신의 이유로 살라』</span></a>
+    <a class="note n3" href="#s3"><span class="pin"></span><span class="nn">03</span><b>피드가 내 마음을 정한다</b><span class="nm">다큐 『소셜 딜레마』</span></a>
+    <a class="note n4" href="#s4"><span class="pin"></span><span class="nn">04</span><b>나를 다 받아 주는 상대</b><span class="nm">영화 『그녀(Her)』</span></a>
+    <a class="note n1" href="#s5"><span class="pin"></span><span class="nn">05</span><b>천천히 얻은 것</b><span class="nm">『어린 왕자』 · 『모모』</span></a>
+    <a class="note n2" href="#s6"><span class="pin"></span><span class="nn">06</span><b>돈으로도 검색으로도 안 되는 것</b><span class="nm">『죽음의 수용소에서』</span></a>
+    <a class="note n3" href="#s7"><span class="pin"></span><span class="nn">07</span><b>옆에 서 주는 사람</b><span class="nm">드라마 『나의 아저씨』</span></a>
+    <a class="note n4" href="#s8"><span class="pin"></span><span class="nn">08</span><b>우리가 남긴 것</b><span class="nm">『무신론자를 위한 종교』 · 우리의 문장들</span></a>
+  </div>
+
+  <section class="session" id="intro">
+    <p class="num">시작 전에</p>
+    <h2>모임을 여는 법</h2>
+    <p class="see">여덟 번 모두 같은 순서로 진행하고, 같은 약속을 지켜요.</p>
+
+  <div class="box">
+    <h2>매번 같은 순서</h2>
+    <ol class="flow">
+      <li><span class="t">5분</span><span><b>여는 말</b> · 오늘의 주제를 한두 문장으로 소개해요.</span></li>
+      <li><span class="t">15분</span><span><b>지난 한 문장</b> · 지난번에 말한 "원하는 것"이 어떻게 됐는지 돌아가며 짧게 말해요. (2회부터)</span></li>
+      <li><span class="t">10분</span><span><b>함께 보기</b> · 책 한 대목을 소리 내어 읽거나 영상 한 장면을 같이 봐요. 미리 읽어 오지 않아도 돼요.</span></li>
+      <li><span class="t">40분</span><span><b>이야기 나누기</b> · 질문 세 개를 차례로 다뤄요. 다 못 해도 괜찮아요.</span></li>
+      <li><span class="t">5분</span><span><b>생각 한 조각</b> · 진행자가 오늘 이야기를 짧게 묶어요.</span></li>
+      <li><span class="t">15분</span><span><b>한 문장</b> · 각자 "요즘 내가 원하는 것"을 한 문장으로 말해요. 진행자가 받아 적어 둬요.</span></li>
+    </ol>
+  </div>
+
+  <div class="box">
+    <h2>모임의 약속 세 가지</h2>
+    <ul class="rules">
+      <li><b>고쳐 주지 않기.</b> 누가 고민을 말해도 조언하지 않고 들어요.</li>
+      <li><b>비교하지 않기.</b> 누구의 소원이 더 크거나 작은지 따지지 않아요.</li>
+      <li><b>밖으로 옮기지 않기.</b> 여기서 들은 이야기는 여기에 두고 가요.</li>
+    </ul>
+  </div>
+  </section>
+
+  <!-- 1 -->
+  <section class="session" id="s1">
+    <p class="num">01회</p>
+    <h2>노력하면 되는 것, 안 되는 것</h2>
+    <p class="see">함께 볼 것 · <b>『미움받을 용기』</b> 셋째 밤, '과제의 분리'를 설명하는 대목</p>
+
+    <div class="step">
+      <h3>여는 말 <span class="t">5분</span></h3>
+      <div class="say">
+        <p>반가워요. 이 모임은 책 이야기를 핑계로 "요즘 뭘 원하는지"를 같이 이야기하는 자리예요. 정답을 찾으려는 모임이 아니에요. 그냥 각자 원하는 걸 말하고, 옆에서 들어 주는 거예요.</p>
+        <p>먼저 약속 세 가지만 같이 읽고 시작할게요.</p>
+      </div>
+      <p class="do">약속 세 가지를 소리 내어 읽어요. 이어서 돌아가며 이름과 "요즘 자주 하는 생각" 하나로 자기소개를 해요.</p>
+    </div>
+
+    <div class="step">
+      <h3>함께 보기 <span class="t">10분</span></h3>
+      <div class="say">
+        <p>오늘 읽을 부분은 '과제의 분리'예요. 내가 할 수 있는 일과 남이 정하는 일을 나눠 보자는 이야기예요. 한 사람이 한 단락씩 읽어 볼게요.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <h3>이야기 나누기 <span class="t">40분</span></h3>
+      <ol class="q">
+        <li>요즘 원하는 것 중에 <b>노력하면 되는 것</b> 하나, <b>아무리 해도 내 마음대로 안 되는 것</b> 하나를 꼽는다면요?<span class="tip">진행자가 먼저 자기 예를 들어 주면 말문이 쉽게 열려요.</span></li>
+        <li>안 되는 쪽에 들어간 건 주로 무엇이었나요? 돈, 사람, 운, 건강… 비슷한 게 있었나요?<span class="tip">답을 화이트보드나 종이에 두 칸으로 나눠 적어 두면 모두가 같이 볼 수 있어요.</span></li>
+        <li>다른 사람에게는 쉬운데 나에게는 유독 어려운 게 있나요? 반대로 나에게는 쉬운 것은요?<span class="tip">"그 선은 사람마다 다르다"는 것을 느끼게 하는 질문이에요. 결론을 내리지 않아도 돼요.</span></li>
+      </ol>
+    </div>
+
+    <div class="step">
+      <h3>생각 한 조각 <span class="t">5분</span></h3>
+      <div class="say">
+        <p>오늘 이야기를 들어 보니, 원하는 것에는 내 노력이 잘 닿는 것과 잘 안 닿는 것이 있는 것 같아요. 그리고 노력이 안 닿기 시작하는 그 선이 사람마다 다르고요.</p>
+        <p>앞으로 여덟 번 동안 그 선 근처에서 무슨 일이 일어나는지 같이 살펴보려고 해요.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <h3>한 문장 <span class="t">15분</span></h3>
+      <div class="one"><span class="lbl">오늘의 한 문장</span><p>"요즘 나는 ○○을 원해요."</p></div>
+      <p class="do">처음이니 거창하지 않아도 된다고 말해 주세요. "잠을 푹 자고 싶어요"도 좋아요. 진행자는 모두의 문장을 받아 적어요. 다음 모임 때 이 문장으로 시작해요.</p>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section class="session" id="s2">
+    <p class="num">02회</p>
+    <h2>그거, 진짜 내가 원한 걸까</h2>
+    <p class="see">함께 볼 것 · <b>『너 자신의 이유로 살라』</b> 첫 장, 남의 욕망을 따라 원하게 되는 이야기</p>
+
+    <div class="step">
+      <h3>여는 말 <span class="t">5분</span></h3>
+      <div class="say">
+        <p>지난번엔 원하는 걸 말해 봤어요. 오늘은 한 걸음 더 들어가서, 그걸 "왜" 원하게 됐는지 이야기해 보려고요. 우리가 원하는 것 중에는 사실 옆 사람을 보고 생긴 것도 꽤 있거든요.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <h3>지난 한 문장 <span class="t">15분</span></h3>
+      <div class="say">
+        <p>지난번에 적어 둔 문장을 한 사람씩 읽어 드릴게요. 2주 동안 그게 어떻게 됐는지, 그대로인지 바뀌었는지 짧게 말해 주세요.</p>
+      </div>
+      <p class="do">"이뤘다/못 이뤘다"로 평가하지 않아요. "그동안 그 생각을 몇 번 했는지"만 말해도 충분해요.</p>
+    </div>
+
+    <div class="step">
+      <h3>함께 보기 <span class="t">10분</span></h3>
+      <div class="say">
+        <p>이 책은 사람이 원하는 걸 혼자 정하지 않고, 남이 원하는 걸 보고 따라 원한다고 말해요. 그 이야기가 처음 나오는 부분을 같이 읽어 볼게요.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <h3>이야기 나누기 <span class="t">40분</span></h3>
+      <ol class="q">
+        <li>남이 가진 걸 보고 갑자기 갖고 싶어진 적이 있나요? 물건이든 경험이든요.<span class="tip">가벼운 예(옷, 여행지, 맛집)부터 시작하면 편해요.</span></li>
+        <li>가까운 사람일수록 더 신경 쓰이는 경우가 있나요? 연예인보다 친구나 동료가 더 부러운 순간이요.<span class="tip">질투라는 단어가 나와도 괜찮다고 먼저 말해 주세요.</span></li>
+        <li>지난번 내 한 문장은 어디서 왔을까요? 누구를 보고 생긴 마음일까요?<span class="tip">답이 "모르겠다"여도 좋은 답이에요.</span></li>
+      </ol>
+    </div>
+
+    <div class="step">
+      <h3>생각 한 조각 <span class="t">5분</span></h3>
+      <div class="say">
+        <p>남을 보고 원하게 되는 건 나쁜 게 아니에요. 사람은 원래 그렇게 배워요. 다만 그 사람이 너무 가까우면 같은 걸 두고 겨루게 되기도 해요.</p>
+        <p>오늘은 내 욕망에 "출처"가 있다는 것만 알아차려도 충분해요.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <h3>한 문장 <span class="t">15분</span></h3>
+      <div class="one"><span class="lbl">오늘의 한 문장</span><p>"남이 아니라 내가 원하는 건 ○○이에요."</p></div>
+      <p class="do">지난번 문장을 그대로 다시 말해도 돼요. 바뀌었다면 왜 바뀌었는지 한마디만 덧붙여요.</p>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section class="session" id="s3">
+    <p class="num">03회</p>
+    <h2>피드가 내 마음을 정한다</h2>
+    <p class="see">함께 볼 것 · 다큐멘터리 <b>『소셜 딜레마』</b> 앞부분 10분 · 더 읽을 사람은 <b>『도둑맞은 집중력』</b></p>
+
+    <div class="step">
+      <h3>여는 말 <span class="t">5분</span></h3>
+      <div class="say">
+        <p>지난번엔 옆 사람을 보고 원하게 된다는 이야기를 했어요. 그런데 요즘은 옆 사람보다 휴대폰 화면을 더 많이 보죠. 오늘은 화면이 우리 마음을 어떻게 움직이는지 이야기해 볼게요.</p>
+      </div>
+      <p class="do">시작 전에 각자 휴대폰의 오늘 화면 사용 시간을 확인해 보자고 해요. 공개는 원하는 사람만 해요.</p>
+    </div>
+
+    <div class="step">
+      <h3>지난 한 문장 <span class="t">15분</span></h3>
+      <p class="do">2회와 같은 방식으로 돌아가며 말해요.</p>
+    </div>
+
+    <div class="step">
+      <h3>함께 보기 <span class="t">10분</span></h3>
+      <div class="say">
+        <p>이 다큐에는 앱을 직접 만들던 사람들이 나와요. 그 사람들이 왜 자기 아이에게는 휴대폰을 잘 안 주는지, 앞부분만 같이 볼게요.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <h3>이야기 나누기 <span class="t">40분</span></h3>
+      <ol class="q">
+        <li>오늘 본 것 중에 내가 직접 찾아본 건 몇 개였나요? 나머지는 어떻게 내 앞에 왔을까요?<span class="tip">숫자로 대답하게 하면 재미있어져요.</span></li>
+        <li>예전에는 오래 걸려야 얻던 것을 지금은 바로 얻게 된 게 있나요? 정보, 물건, 연락, 칭찬…<span class="tip">"좋아진 점"도 충분히 말하게 해 주세요. 휴대폰을 탓하는 시간이 되지 않게요.</span></li>
+        <li>그렇게 바로 얻은 것 중에 오래 남아 있는 게 있나요?<span class="tip">이 질문에서 잠깐 조용해져도 기다려 주세요.</span></li>
+      </ol>
+    </div>
+
+    <div class="step">
+      <h3>생각 한 조각 <span class="t">5분</span></h3>
+      <div class="say">
+        <p>예전에는 원하는 걸 얻으려면 여러 단계를 거쳐야 했어요. 기다리고, 헤매고, 부탁하고요. 지금은 많은 것이 한 번에 와요. 편해진 건 분명해요.</p>
+        <p>그런데 차례를 거치며 생기던 무언가, 기다림이나 익숙해짐 같은 것은 같이 사라졌는지도 몰라요.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <h3>한 문장 <span class="t">15분</span></h3>
+      <div class="one"><span class="lbl">오늘의 한 문장</span><p>"화면 밖에서 원하는 건 ○○이에요."</p></div>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section class="session" id="s4">
+    <p class="num">04회</p>
+    <h2>나를 다 받아 주는 상대</h2>
+    <p class="see">함께 볼 것 · 영화 <b>『그녀(Her)』</b> 후반부, 사만다가 동시에 수많은 사람과 대화하고 있었다고 말하는 장면</p>
+
+    <div class="step">
+      <h3>여는 말 <span class="t">5분</span></h3>
+      <div class="say">
+        <p>요즘은 AI와 이야기하는 사람이 많아요. 고민을 털어놓기도 하고요. 오늘은 "절대 나를 거절하지 않는 상대"가 생긴다면 어떨지 이야기해 볼게요.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <h3>지난 한 문장 <span class="t">15분</span></h3>
+      <p class="do">돌아가며 말해요. 이번부터는 "이 모임에서 말하고 나서 달라진 게 있는지"도 물어봐요.</p>
+    </div>
+
+    <div class="step">
+      <h3>함께 보기 <span class="t">10분</span></h3>
+      <div class="say">
+        <p>이 영화의 주인공은 AI와 사랑에 빠져요. AI는 언제나 다정하고, 언제나 그를 이해해 줘요. 그런데 어느 날 주인공이 뭔가를 알게 돼요. 그 장면을 같이 볼게요.</p>
+      </div>
+      <p class="do">영화를 안 본 사람이 있으면 앞 줄거리를 1분 정도로 설명해 줘요.</p>
+    </div>
+
+    <div class="step">
+      <h3>이야기 나누기 <span class="t">40분</span></h3>
+      <ol class="q">
+        <li>AI나 챗봇에게 고민을 말해 본 적이 있나요? 사람에게 말할 때와 뭐가 달랐나요?<span class="tip">써 본 적 없는 사람에게는 "써 보고 싶은지, 왜 안 쓰는지"를 물어요.</span></li>
+        <li>절대 거절하지 않고, 늘 내 편인 친구가 있다면 좋을까요?<span class="tip">"좋다"와 "싫다"가 둘 다 나오면 서로의 이유를 들어 보게 해요.</span></li>
+        <li>누군가에게 거절당했던 경험이 나에게 남긴 게 있나요?<span class="tip">무거운 이야기가 나오면 진행자는 고쳐 주지 말고 "말해 줘서 고마워요"라고만 해요.</span></li>
+      </ol>
+    </div>
+
+    <div class="step">
+      <h3>생각 한 조각 <span class="t">5분</span></h3>
+      <div class="say">
+        <p>다 받아 주는 상대는 편해요. 그런데 거울처럼 내 마음이 그대로 돌아오기만 하면, 나는 거기서 새로운 걸 만나지 못해요.</p>
+        <p>사람은 가끔 거절하고, 나와 다르게 생각해요. 그게 불편하지만, 그래서 내가 조금씩 바뀌기도 해요.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <h3>한 문장 <span class="t">15분</span></h3>
+      <div class="one"><span class="lbl">오늘의 한 문장</span><p>"사람에게서만 받을 수 있는 ○○을 원해요."</p></div>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section class="session" id="s5">
+    <p class="num">05회</p>
+    <h2>천천히 얻은 것</h2>
+    <p class="see">함께 볼 것 · <b>『어린 왕자』</b> 21장, 여우가 길들이는 법을 알려 주는 장면 · <b>『모모』</b> 회색 신사가 이발사 푸지 씨에게 시간을 아끼라고 권하는 장면</p>
+
+    <div class="step">
+      <h3>여는 말 <span class="t">5분</span></h3>
+      <div class="say">
+        <p>오늘로 반환점이에요. 지금까지는 빨라진 세상 이야기를 많이 했어요. 오늘은 반대로, 천천히 얻은 것들 이야기를 해 보려고 해요.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <h3>지난 한 문장 <span class="t">15분</span></h3>
+      <p class="do">돌아가며 말해요. 반환점이니 1회 때 문장과 지금 문장을 나란히 읽어 줘도 좋아요.</p>
+    </div>
+
+    <div class="step">
+      <h3>함께 보기 <span class="t">10분</span></h3>
+      <div class="say">
+        <p>두 장면을 읽을게요. 하나는 친해지려면 매일 같은 시간에 조금씩 가까이 와야 한다는 여우 이야기예요. 다른 하나는 시간을 아끼라는 말을 듣고 오히려 하루가 더 바빠진 이발사 이야기예요.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <h3>이야기 나누기 <span class="t">40분</span></h3>
+      <ol class="q">
+        <li>오래 기다려서 얻은 것 중에 기억나는 게 있나요? 사람이든, 물건이든, 실력이든요.<span class="tip">어린 시절 이야기가 나오면 충분히 들어 주세요.</span></li>
+        <li>시간을 아끼려고 했는데 오히려 마음이 더 바빠진 적이 있나요?</li>
+        <li>지금 내 생활에서 일부러 천천히 해 보고 싶은 게 하나 있다면요?<span class="tip">"주말 아침에 휴대폰 안 보기"처럼 작고 구체적일수록 좋아요.</span></li>
+      </ol>
+    </div>
+
+    <div class="step">
+      <h3>생각 한 조각 <span class="t">5분</span></h3>
+      <div class="say">
+        <p>천천히 얻으면 그 사이에 기다림이 생기고, 기다리는 동안 그게 나에게 특별해져요. 여우가 말한 "길들인다"는 게 그런 거겠죠.</p>
+        <p>빠른 세상에서 일부러 늦추는 건 손해처럼 보여요. 하지만 그 늦춤이 원하는 마음을 지켜 주기도 해요.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <h3>한 문장 <span class="t">15분</span></h3>
+      <div class="one"><span class="lbl">오늘의 한 문장</span><p>"천천히 얻고 싶은 건 ○○이에요."</p></div>
+      <p class="do">질문 3에서 말한 "늦춰 볼 것"을 다음 모임까지 해 보고 오자고 가볍게 권해요. 숙제는 아니에요.</p>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section class="session" id="s6">
+    <p class="num">06회</p>
+    <h2>돈으로도 검색으로도 안 되는 것</h2>
+    <p class="see">함께 볼 것 · <b>『죽음의 수용소에서』</b> 1부, 수용소에서 저녁노을을 함께 바라보는 장면</p>
+
+    <div class="step">
+      <h3>여는 말 <span class="t">5분</span></h3>
+      <div class="say">
+        <p>지금은 궁금한 게 생기면 거의 다 검색으로 답을 얻어요. 그런데 답을 알아도 마음이 안 풀리는 물음이 있어요. 오늘은 그런 물음 이야기를 해 볼게요. 조금 무거울 수 있는데, 말하기 싫으면 듣기만 해도 돼요.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <h3>지난 한 문장 <span class="t">15분</span></h3>
+      <p class="do">돌아가며 말해요. 지난번에 권한 "늦춰 볼 것"을 해 봤는지도 같이 물어요.</p>
+    </div>
+
+    <div class="step">
+      <h3>함께 보기 <span class="t">10분</span></h3>
+      <div class="say">
+        <p>이 책을 쓴 빅터 프랭클은 나치 수용소에서 살아남은 정신과 의사예요. 모든 걸 빼앗긴 사람들이 함께 노을을 바라보는 장면을 같이 읽어 볼게요.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <h3>이야기 나누기 <span class="t">40분</span></h3>
+      <ol class="q">
+        <li>답을 알아도 여전히 남는 질문이 있나요? "왜 하필 나일까", "나는 뭘 위해 사나" 같은 것들이요.<span class="tip">진행자가 먼저 자기 질문 하나를 솔직하게 꺼내 주면 좋아요.</span></li>
+        <li>설명할 수 없는데 마음이 크게 움직였던 순간이 있나요? 풍경, 음악, 누군가의 한마디…</li>
+        <li>그 순간을 사진이나 글로 남겨 봤다면, 그때 느낌이 그대로 남았나요?<span class="tip">"남지 않았다"는 답이 많을 거예요. 그게 오늘의 핵심이에요.</span></li>
+      </ol>
+    </div>
+
+    <div class="step">
+      <h3>생각 한 조각 <span class="t">5분</span></h3>
+      <div class="say">
+        <p>요즘 기술은 거의 모든 것에 답을 줘요. 그런데 오늘 나온 순간들은 답이 아니라 "겪은 것"이었어요. 그 자리에, 그 사람들과 있어야만 생기는 것이요.</p>
+        <p>이런 건 아무리 노력해도 내 마음대로 되지 않아요. 그래서 혼자보다 함께 맞이하는 게 더 잘 어울리는 것 같아요.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <h3>한 문장 <span class="t">15분</span></h3>
+      <div class="one"><span class="lbl">오늘의 한 문장</span><p>"답이 아니라 ○○을 원해요."</p></div>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section class="session" id="s7">
+    <p class="num">07회</p>
+    <h2>옆에 서 주는 사람</h2>
+    <p class="see">함께 볼 것 · 드라마 <b>『나의 아저씨』</b> 중 동훈이 지안의 사정을 캐묻지 않고 곁을 지키는 장면 하나</p>
+
+    <div class="step">
+      <h3>여는 말 <span class="t">5분</span></h3>
+      <div class="say">
+        <p>이제 두 번 남았어요. 오늘은 사람 사이의 이야기예요. 마주 보는 관계 말고, 옆에 나란히 서는 관계에 대해서요.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <h3>지난 한 문장 <span class="t">15분</span></h3>
+      <p class="do">돌아가며 말해요. 이번에는 말한 사람에게 다른 사람들이 "그 마음 응원해요" 한마디씩 해 주는 걸로 마무리해요.</p>
+    </div>
+
+    <div class="step">
+      <h3>함께 보기 <span class="t">10분</span></h3>
+      <div class="say">
+        <p>이 드라마의 두 사람은 서로를 고쳐 주려고 하지 않아요. 각자 힘든 걸 안고 있는데, 그냥 옆에 있어요. 그런 장면 하나를 같이 볼게요.</p>
+      </div>
+      <p class="do">드라마를 고르기 어렵다면 C.S. 루이스 『네 가지 사랑』의 우정 장에서 "연인은 마주 보고, 친구는 나란히 같은 곳을 본다"는 취지의 대목을 대신 읽어요.</p>
+    </div>
+
+    <div class="step">
+      <h3>이야기 나누기 <span class="t">40분</span></h3>
+      <ol class="q">
+        <li>나를 고쳐 주려는 사람과 그냥 옆에 있어 주는 사람, 둘 다 만나 봤나요? 어떻게 달랐나요?</li>
+        <li>누군가와 같은 목표를 향해 같이 애써 본 적이 있나요? 운동, 공부, 이사, 간병… 그때 그 사람과의 관계는 어땠나요?<span class="tip">같은 걸 두고 겨룬 관계(2회)와 비교해 보게 하면 좋아요.</span></li>
+        <li>이 모임에서 여섯 번 다른 사람의 한 문장을 들었어요. 들으면서 내 마음에 생긴 게 있나요?<span class="tip">이 모임 자체를 돌아보는 질문이에요. 서로에게 직접 말해도 좋아요.</span></li>
+      </ol>
+    </div>
+
+    <div class="step">
+      <h3>생각 한 조각 <span class="t">5분</span></h3>
+      <div class="say">
+        <p>같은 걸 갖고 싶으면 겨루게 되고, 다 받아 주는 상대 앞에서는 내 마음만 돌아와요. 그런데 같은 벽 앞에 나란히 서 있는 사람과는 뭔가가 새로 생겨요.</p>
+        <p>우리가 여기서 매번 한 게 그거였던 것 같아요. 서로를 고쳐 주지 않고, 각자 원하는 걸 말하고, 옆에서 들어 준 거요.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <h3>한 문장 <span class="t">15분</span></h3>
+      <div class="one"><span class="lbl">오늘의 한 문장</span><p>"옆 사람의 ○○이 이뤄졌으면 좋겠어요."</p></div>
+      <p class="do">이번만 특별히, 내 소원 대신 오른쪽에 앉은 사람의 소원을 응원하는 문장을 말해요. 진행자는 다음 회를 위해 1회부터 지금까지의 문장을 모두 정리해 둬요.</p>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section class="session" id="s8">
+    <p class="num">08회</p>
+    <h2>우리가 남긴 것</h2>
+    <p class="see">함께 볼 것 · <b>『무신론자를 위한 종교』</b> '공동체' 장 일부 · 그리고 지금까지 모은 우리의 한 문장들</p>
+
+    <div class="step">
+      <h3>여는 말 <span class="t">5분</span></h3>
+      <div class="say">
+        <p>마지막 모임이에요. 오늘은 새 이야기보다 지금까지 함께 쌓은 걸 돌아보려고 해요.</p>
+        <p>옛날에는 종교 모임이 이런 역할을 했어요. 매주 같은 사람들과 모여서 각자의 바람을 말하고, 같이 들어 주는 자리요. 요즘은 그런 자리가 많이 사라졌는데, 우리는 여덟 번 그걸 해 본 셈이에요.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <h3>함께 보기 <span class="t">10분</span></h3>
+      <div class="say">
+        <p>먼저 책 한 대목을 짧게 읽을게요. 종교를 믿지 않아도 종교가 가진 "함께 모이는 방식"은 빌려 쓸 수 있다는 이야기예요.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <h3>우리의 문장 돌아보기 <span class="t">30분</span></h3>
+      <p class="do">이번 회는 '지난 한 문장' 순서 대신 이 순서를 길게 가져요. 진행자가 정리해 온 문장들을 사람별로 한 장씩 나눠 줘요. 1회부터 7회까지의 문장이 한 장에 모여 있어요.</p>
+      <div class="say">
+        <p>각자 자기 종이를 천천히 읽어 보세요. 그리고 한 사람씩, 문장이 어떻게 변해 왔는지 말해 볼게요.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <h3>이야기 나누기 <span class="t">25분</span></h3>
+      <ol class="q">
+        <li>여덟 번 동안 내가 원하는 것은 어떻게 바뀌었나요? 그대로인 것은요?</li>
+        <li>다른 사람의 문장 중에 기억에 남는 게 있나요? 그 사람에게 직접 말해 주세요.<span class="tip">이 질문이 이 모임에서 가장 따뜻한 시간이 되는 경우가 많아요. 시간을 넉넉히 주세요.</span></li>
+        <li>이 모임이 끝나도 이어 가고 싶은 게 있나요?<span class="tip">다음 시즌, 단톡방, 한 달에 한 번 모임 등 구체적인 이야기가 나오면 메모해 둬요.</span></li>
+      </ol>
+    </div>
+
+    <div class="step">
+      <h3>생각 한 조각 <span class="t">5분</span></h3>
+      <div class="say">
+        <p>처음엔 "요즘 뭐가 갖고 싶어요?"라는 질문으로 시작했어요. 여덟 번이 지나고 남은 건 책 내용보다, 서로의 바람을 들어 준 시간이었던 것 같아요.</p>
+        <p>누구의 소원도 혼자 이룬 건 아니지만, 혼자 품고 있지는 않았어요. 그게 우리가 함께 남긴 거예요.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <h3>마지막 한 문장 <span class="t">15분</span></h3>
+      <div class="one"><span class="lbl">마지막 한 문장</span><p>"이제 나는 ○○을 원해요."</p></div>
+      <p class="do">마지막 문장까지 적은 종이를 각자 가져가요. 진행자는 모두의 마지막 문장을 한 장에 모아 사진으로 나눠 줘도 좋아요.</p>
+    </div>
+  </section>
+
+  <footer>진행자 메모 · 대본은 뼈대일 뿐이에요. 이야기가 한 질문에서 깊어지면 나머지 질문은 건너뛰어도 돼요. 그리고 시간보다 "고쳐 주지 않기" 약속을 지키는 게 더 중요해요.</footer>
+
+</div>
+<script>
+(function () {
+  var root = document.documentElement;
+  root.classList.add('js');
+  var secs = Array.prototype.slice.call(document.querySelectorAll('section.session'));
+  var label = function (s) { return s.querySelector('.num').textContent + ' · ' + s.querySelector('h2').textContent; };
+  secs.forEach(function (s, i) {
+    var top = document.createElement('p');
+    top.className = 'back';
+    top.innerHTML = '<a href="#">← 포스트잇 보드</a><a href="논고-다이어그램.html">논고로 돌아가기</a>';
+    s.insertBefore(top, s.firstChild);
+    var nav = document.createElement('nav');
+    nav.className = 'pager';
+    var prev = secs[i - 1], next = secs[i + 1];
+    nav.innerHTML = (prev ? '<a href="#' + prev.id + '">← ' + label(prev) + '</a>' : '<span></span>') +
+                    (next ? '<a href="#' + next.id + '">' + label(next) + ' →</a>' : '<a href="#">보드로 돌아가기 →</a>');
+    s.appendChild(nav);
+  });
+  function route() {
+    var id = location.hash.slice(1);
+    var hit = null;
+    secs.forEach(function (s) { var on = s.id === id; s.classList.toggle('on', on); if (on) hit = s; });
+    root.classList.toggle('detail', !!hit);
+    window.scrollTo(0, 0);
+  }
+  window.addEventListener('hashchange', route);
+  route();
+})();
+</script>
+</body>
+</html>
