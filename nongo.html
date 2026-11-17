@@ -51,6 +51,39 @@ svg { width: 100%; min-width: 960px; display: block; }
 @media (max-width: 960px) { .defs { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 760px) { .defs { grid-template-columns: 1fr; } .props ol { grid-template-columns: 1fr; } body { padding: 2rem 1rem; } }
 @media print { .diagram-container { overflow-x: visible; } svg { min-width: 0; } }
+
+/* ── 휴대폰 · 태블릿 ── */
+.zoom-btn { display: none; }
+@media (max-width: 960px) {
+  svg { min-width: 0; }
+  .diagram-container { overflow: visible; cursor: zoom-in; }
+  .diagram-container svg { border: 1px solid rgba(45,49,66,0.12); border-radius: 6px; }
+  .zoom-btn { display: inline-flex; align-items: center; gap: 0.35rem; margin-top: 0.6rem; font: inherit; font-size: 0.86rem; font-weight: 600; color: var(--color-accent); background: #fff; border: 1px solid rgba(191,69,32,0.45); border-radius: 999px; padding: 0.5rem 1rem; cursor: pointer; }
+}
+@media (max-width: 760px) {
+  body { padding: 1.5rem 1rem 3rem; }
+  .lede { font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.25rem; }
+  .part { margin-top: 2.75rem; }
+  .part-label { flex-direction: column; gap: 0.25rem; font-size: 1.02rem; line-height: 1.45; }
+  .toc { flex-wrap: nowrap; overflow-x: auto; margin: 0 -1rem 0.5rem; padding: 0 1rem 0.5rem; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .toc::-webkit-scrollbar { display: none; }
+  .toc a { flex: none; padding: 0.5rem 0.8rem; }
+  .sublist li { gap: 0.6rem; font-size: 0.97rem; line-height: 1.7; }
+  .sublist .n { min-width: 2.6rem; }
+  .fulltext { columns: 1; }
+  .props li { font-size: 0.95rem; }
+}
+dialog.zoom { position: fixed; inset: 0; width: 100%; max-width: 100%; height: 100%; max-height: 100%; margin: 0; padding: 0; border: 0; background: var(--color-paper); color: var(--color-ink); }
+dialog.zoom[open] { display: flex; flex-direction: column; }
+dialog.zoom::backdrop { background: rgba(20,22,30,0.6); }
+html:has(dialog.zoom[open]) { overflow: hidden; }
+.zoom-bar { flex: none; display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: calc(10px + env(safe-area-inset-top, 0px)) 16px 10px; background: #fff; border-bottom: 1px solid rgba(45,49,66,0.12); }
+.zoom-bar b { font-size: 0.95rem; font-weight: 600; line-height: 1.4; }
+.zoom-bar button { flex: none; font: inherit; font-size: 0.88rem; font-weight: 600; color: var(--color-muted); background: none; border: 1px solid rgba(45,49,66,0.25); border-radius: 999px; padding: 0.45rem 0.95rem; cursor: pointer; }
+.zoom-hint { flex: none; font-size: 0.8rem; color: var(--color-soft); padding: 8px 16px 0; }
+.zoom-body { flex: 1; overflow: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; padding: 12px 16px calc(24px + env(safe-area-inset-bottom, 0px)); }
+.zoom-body svg { width: 1080px; min-width: 0; max-width: none; }
+@media print { .zoom-btn { display: none; } }
 </style>
 </head>
 <body>
@@ -1048,5 +1081,43 @@ svg { width: 100%; min-width: 960px; display: block; }
   </section>
 
 </div>
+
+<dialog class="zoom" id="zoom" aria-labelledby="zoomTitle">
+  <div class="zoom-bar"><b id="zoomTitle"></b><button type="button" id="zoomClose">닫기 ✕</button></div>
+  <p class="zoom-hint">옆으로 밀어서 보세요 · 두 손가락으로 더 키울 수 있어요</p>
+  <div class="zoom-body" id="zoomBody"></div>
+</dialog>
+<script>
+(function () {
+  var dlg = document.getElementById("zoom"), body = document.getElementById("zoomBody"), ttl = document.getElementById("zoomTitle"), last = null;
+  var mq = window.matchMedia("(max-width: 960px)");
+  function titleOf(c) {
+    var sec = c.closest("section"), lab = sec && sec.querySelector(".part-label");
+    if (!lab) return "그림";
+    return Array.prototype.filter.call(lab.childNodes, function (n) { return n.nodeType === 3; }).map(function (n) { return n.textContent; }).join("").trim() || "그림";
+  }
+  function open(c, trigger) {
+    var svg = c.querySelector("svg"); if (!svg) return;
+    var cl = svg.cloneNode(true);
+    cl.removeAttribute("aria-labelledby");
+    cl.setAttribute("aria-label", titleOf(c));
+    cl.querySelectorAll("title[id], desc[id]").forEach(function (n) { n.removeAttribute("id"); });
+    ttl.textContent = titleOf(c);
+    body.textContent = ""; body.appendChild(cl);
+    last = trigger || null;
+    try { dlg.showModal(); } catch (e) { dlg.setAttribute("open", ""); }
+    body.scrollLeft = 0; body.scrollTop = 0;
+  }
+  document.querySelectorAll(".diagram-container").forEach(function (c) {
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "zoom-btn"; b.textContent = "그림 크게 보기 ↗";
+    b.addEventListener("click", function () { open(c, b); });
+    c.insertAdjacentElement("afterend", b);
+    c.addEventListener("click", function () { if (mq.matches) open(c, b); });
+  });
+  document.getElementById("zoomClose").addEventListener("click", function () { dlg.close(); });
+  dlg.addEventListener("close", function () { body.textContent = ""; if (last) last.focus({ preventScroll: true }); });
+})();
+</script>
 </body>
 </html>
