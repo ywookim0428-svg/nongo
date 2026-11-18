@@ -44,6 +44,19 @@ svg { width: 100%; min-width: 960px; display: block; }
 .scene h3 { font-family: var(--font-sans); font-size: 0.9rem; font-weight: 600; }
 .sublist + .sublist, .note-block + .sublist, .scene + .sublist { margin-top: 1.25rem; }
 .refs { margin-top: 2.25rem; }
+.compare { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem; margin-bottom: 1.25rem; }
+.compare li { background: #fff; border: 1px solid rgba(45,49,66,0.12); border-radius: 6px; padding: 0.9rem 1rem 1rem; display: grid; gap: 0.45rem; align-content: start; }
+.compare li.focal { border-color: var(--color-accent); background: rgba(191,69,32,0.06); }
+.compare .k { font-size: 0.72rem; font-weight: 600; color: var(--color-muted); }
+.compare li.focal .k { color: var(--color-accent); }
+.compare .main { font-family: 'Noto Serif KR', var(--font-serif); font-size: 1rem; line-height: 1.55; }
+.compare .sub { font-size: 0.84rem; line-height: 1.55; color: var(--color-muted); }
+.ledger { width: 100%; max-width: 46rem; border-collapse: collapse; margin-bottom: 1.25rem; font-size: 0.92rem; line-height: 1.5; }
+.ledger th, .ledger td { text-align: left; padding: 0.6rem 0.75rem; border-bottom: 1px solid rgba(45,49,66,0.12); vertical-align: top; }
+.ledger thead th { font-size: 0.78rem; font-weight: 600; color: var(--color-muted); border-bottom-color: rgba(45,49,66,0.3); }
+.ledger tbody th { font-weight: 600; white-space: nowrap; color: var(--color-muted); font-size: 0.84rem; }
+.ledger td.produced { background: rgba(191,69,32,0.05); }
+@media (max-width: 760px) { .compare { grid-template-columns: 1fr; } .ledger th, .ledger td { padding: 0.55rem 0.45rem; } }
 .refs ol { padding-left: 1.4rem; display: grid; gap: 0.55rem; font-size: 0.86rem; line-height: 1.6; color: var(--color-muted); max-width: 54rem; }
 .refs li { scroll-margin-top: 1rem; }
 .refs li em { font-style: italic; }
@@ -114,6 +127,8 @@ html:has(dialog.zoom[open]) { overflow: hidden; }
     <a href="#aura"><span>07</span>관계의 아우라</a>
     <a href="#solidarity"><span>덧붙임</span>연대</a>
     <a href="#others"><span>덧붙임</span>타자의 세 자리</a>
+    <a href="#source"><span>덧붙임</span>불씨와 틈</a>
+    <a href="#ought"><span>덧붙임</span>왜 생산적인 욕망인가</a>
     <a href="#text"><span>전문</span>명제 1 — 4</a>
     <a href="#refs"><span>참고</span>참고 문헌</a>
     <a href="#props"><span>명제</span>주요 명제</a>
@@ -612,7 +627,7 @@ html:has(dialog.zoom[open]) { overflow: hidden; }
   </section>
   <section class="part" id="remedy">
     <p class="part-label"><span>05 — 06</span>고립과 재건 — 나란히 선 사람으로부터 다시 세운다</p>
-    <p class="lede">AI가 내 대신 세계에 닿는 만큼, 내가 직접 떠나 볼 자리는 줄어든다. 귀찮아진 타자의 자리는 언제나 들어 주는 대화가 채운다. 그 대화는 외로움을 덜어 줄 수 있다. 그러나 내 다음 행동을 바꾸고, 나도 그의 다음 행동을 바꾸는 사람이 곁에 없으면, 욕망은 시험받지 않은 채 쌓인다. 이 논고는 그 상태를 고립이라 부른다. 해법은 AI를 끊는 것이 아니다. 시도가 답보다 먼저 올 시간(명제 5), 나를 거절할 수 있는 사람(6.2), 정해진 때의 귀환(6.3), 함께 시도하고 함께 돌아올 사람(6.4)을 지키는 것이다.</p>
+    <p class="lede">AI가 내 대신 세계에 닿는 만큼, 내가 직접 떠나 볼 자리는 줄어든다. 귀찮아진 타자의 자리는 언제나 들어 주는 대화가 채운다. 그 대화는 외로움을 덜어 줄 수 있다. 그러나 내 다음 행동을 바꾸고, 나도 그 사람의 다음 행동을 바꾸는 사람이 곁에 없으면, 욕망은 시험받지 않은 채 쌓인다. 이 논고는 그 상태를 고립이라 부른다. 해법은 AI를 끊는 것이 아니다. 시도가 답보다 먼저 올 시간(명제 5), 나를 거절할 수 있는 사람(6.2), 정해진 때의 귀환(6.3), 함께 시도하고 함께 돌아올 사람(6.4)을 지키는 것이다.</p>
   <div class="diagram-container">
 <svg viewBox="0 0 1200 884" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="harm-and-remedy-title harm-and-remedy-desc">
 <title id="harm-and-remedy-title">고립과 재건 — 나란히 선 사람으로부터 다시 세운다</title>
@@ -734,7 +749,7 @@ html:has(dialog.zoom[open]) { overflow: hidden; }
 <li><span class="n">6.1</span><span>세계로 가는 길에서 AI가 대신 닿는 곳이 늘었다. 내가 직접 출항할 자리가 줄었다.</span></li>
 <li><span class="n">6.11</span><span>타자는 SNS 이후 귀찮은 존재가 되었고, 언제나 들어 주는 대화가 그 빈자리를 채웠다. 부딪히지 않아도 되는 관계가 늘었다.</span></li>
 <li><span class="n">6.12</span><span>부딪힘이 없으면 욕망은 시험받지 않은 채 쌓인다. 나는 나를 하나의 알고리즘처럼 느낀다.</span></li>
-<li><span class="n">6.13</span><span>이것이 고립이다. 고립은 외로움이 아니다. 내 다음 행동을 바꾸고, 나도 그의 다음 행동을 바꾸는 독립된 사람이 곁에 없는 상태다. 외로움은 줄어도 고립은 남을 수 있다.</span></li>
+<li><span class="n">6.13</span><span>이것이 고립이다. 고립은 외로움이 아니다. 내 다음 행동을 바꾸고, 나도 그 사람의 다음 행동을 바꾸는 독립된 사람이 곁에 없는 상태다. 외로움은 줄어도 고립은 남을 수 있다.</span></li>
     </ol>
     <div class="note-block">
       <p class="lbl">해설</p>
@@ -743,7 +758,7 @@ html:has(dialog.zoom[open]) { overflow: hidden; }
     <ol class="sublist plain">
 <li><span class="n">6.2</span><span>나로부터는 시작할 수 없다. 불씨는 스스로 일어나지만(2.1) 방향은 타자가 준다(명제 3). 그 눈이 이미 알고리즘에 물들어 있다.</span></li>
 <li><span class="n">6.21</span><span>환대는 타자가 들어올 자리를 여는 일이다. 욕망은 나를 비켜가는 것 앞에서 생긴다.</span></li>
-<li><span class="n">6.22</span><span>AI의 공감은 더 정확하고, 외로움을 덜어 주기도 한다. 그러나 나를 거절할 자유가 없는 자의 인정은 내 다음 시도를 걸게 하지 못한다. 거절할 수 있는 사람의 서툰 인정만이 결여를 남기고, 결여에서 욕망이 생긴다.</span></li>
+<li><span class="n">6.22</span><span>AI의 공감은 더 정확하고, 외로움을 덜어 주기도 한다. 그러나 나를 거절할 자유가 없는 자의 인정은 내 다음 시도를 걸게 하지 못한다. 거절할 수 있는 사람의 서툰 인정만이 결여를 남기고, 그 결여에서 욕망이 길을 얻는다(3.33).</span></li>
 <li><span class="n">6.23</span><span>다시 만나야 하는 사람은 넘길 수도 끊을 수도 없다. 그 마찰이 시험받지 않은 욕망을 씻어내고, 서로 다른 차이가 섞여 생산적 욕망이 된다.</span></li>
 <li><span class="n">6.231</span><span>몸으로 만나는 자리는 이 조건을 가장 쉽게 만든다. 그러나 조건은 장소가 아니라 서로를 향한 말과 반복되는 귀환이다.</span></li>
 <li><span class="n">6.24</span><span>환대는 서로를 바꿀 수 있는 존재에게 열린다. AI는 응답하지만, 내 응답으로 달라지는 삶이 없다. 그래서 환대의 자리를 AI에게 내주지 않는다.</span></li>
@@ -842,7 +857,7 @@ html:has(dialog.zoom[open]) { overflow: hidden; }
 <rect x="488" y="332" width="376" height="84" rx="6" fill="#ffffff" stroke="#2d3142" stroke-width="1.2"/>
 <text x="852" y="350" text-anchor="end" font-family="'Geist Mono', ui-monospace, monospace" font-size="9" letter-spacing="0.06em" fill="#5a6580">6.22</text>
 <text x="504" y="374" font-family="'Geist', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif" font-size="14" font-weight="600" fill="#2d3142">서툰 타자의 인정</text>
-<text x="504" y="396" font-family="'Geist', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif" font-size="12" fill="#4f5d75">그 서툶이 결여이고, 결여에서 욕망이 생긴다</text>
+<text x="504" y="396" font-family="'Geist', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif" font-size="12" fill="#4f5d75">그 서툶이 결여이고, 결여에서 욕망이 길을 얻는다</text>
 <rect x="936" y="24" width="240" height="392" rx="8" fill="rgba(191,69,32,0.08)" stroke="#bf4520" stroke-width="1.4"/>
 <text x="956" y="52" font-family="'Geist', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif" font-size="12" font-weight="500" fill="#bf4520">명제 7</text>
 <text x="956" y="104" font-family="'Instrument Serif', 'Noto Serif KR', serif" font-size="40" fill="#2d3142">아우라</text>
@@ -1060,9 +1075,64 @@ html:has(dialog.zoom[open]) { overflow: hidden; }
     </div>
   </section>
 
+  <section class="part" id="source">
+    <p class="part-label"><span>덧붙임 · 근원</span>불씨와 틈 — 생산하는 욕망과 결여</p>
+    <p class="lede">이 논고는 두 전통을 함께 쓴다. 명제 1은 들뢰즈를 따라 욕망이 반복 속에서 차이를 낳으며 생산한다고 말하고, 명제 3과 '너머' 층은 라캉을 따라 욕망이 결여에서 길을 찾는다고 말한다. 그런데 들뢰즈는 바로 이 점에서 라캉을 비판했다. 욕망은 아무것도 결여하지 않는다고. 이 논고는 둘 중 하나를 고르지 않는다. 대신 욕망의 힘과 욕망의 모양을 나눈다. 힘은 내 안에서 일어나고, 모양은 타자의 틈을 지나며 생긴다.</p>
+    <ol class="compare">
+      <li><span class="k">라캉</span><span class="main">욕망은 결여에서 나온다.</span><span class="sub">대타자도 결여되어 있고, 욕망은 끝내 손에 쥘 수 없는 대상(a)을 맴돈다. 이 논고가 받는 것: 대타자의 결여(3.23), '너머' 층.</span></li>
+      <li><span class="k">들뢰즈 · 가타리</span><span class="main">욕망은 아무것도 결여하지 않는다. 생산한다.</span><span class="sub">결여는 사회가 만들어 낸다. 시장은 풍요 속에서 모자람을 조직한다. 이 논고가 받는 것: 반복과 차이(1.1 — 1.22), 생산적 욕망(1.5), 불씨(2.1).</span></li>
+      <li class="focal"><span class="k">이 논고</span><span class="main">불씨는 생산하는 힘이고, 결여는 그 힘이 지나갈 틈이다.</span><span class="sub">채워야 할 빈칸인 결핍과, 아무도 답하지 못하는 자리인 결여를 나눈다(3.33 — 3.35).</span></li>
+    </ol>
+    <ol class="sublist">
+<li><span class="n">2.12</span><span>불씨는 무엇이 모자라서 일어나는 것이 아니다. 불씨는 생산하는 힘이다.</span></li>
+<li><span class="n">3.33</span><span>결여는 욕망의 원인이 아니라 욕망이 지나갈 틈이다. 불씨는 내 안에서 일어나고, 틈은 타자에게 있다.</span></li>
+<li><span class="n">3.34</span><span>결여와 결핍은 다르다. 결핍은 채워야 할 빈칸이고, 결여는 아무도 답하지 못하는 자리다. 결핍은 채우면 끝나고, 결여는 길을 낸다.</span></li>
+<li><span class="n">3.35</span><span>결핍은 만들어질 수 있다. 시장은 풍요 속에서 모자람을 조직해 왔다.</span></li>
+<li><span class="n">4.121</span><span>새로운 대타자는 결핍은 곧바로 채우고, 결여는 답으로 덮는다. 불씨는 지나갈 틈을 잃고, 채워지는 순간 꺼진다. 욕망은 생산되지 않고 소비된다.</span></li>
+<li><span class="n">6.22</span><span>…서툰 인정만이 결여를 남기고, 그 결여에서 욕망이 길을 얻는다.</span></li>
+    </ol>
+    <div class="note-block">
+      <p class="lbl">해설</p>
+      <p>라캉에게 욕망은 결여에서 나오고, 채워지지 않기에 이어진다. 들뢰즈와 가타리는 이것을 정면으로 비판했다. 욕망을 결여로 정의하면 욕망은 늘 무언가를 얻으려는 소비가 되고, 그 결여는 사실 사회가 만들어 낸 것이라고.<sup><a href="#ref-12">12</a></sup> 이 비판은 이 논고에 중요하다. 이 논고가 문제 삼는 플랫폼과 AI가 바로 모자람을 만들고 채우는 장치이기 때문이다.</p>
+      <p>그래서 이 논고는 힘과 모양을 나눈다. 불씨(2.1)는 들뢰즈의 생산이다. 무엇이 모자라서 일어나는 것이 아니다(2.12). 그러나 2.11이 말하듯 불씨는 방향을 스스로 정하지 못한다. 방향은 타자가 만든 지형을 지나며 생기는데, 지형에 틈이 없으면, 곧 대타자가 모든 것에 답하면 지나갈 곳이 없다(3.31). 라캉의 결여를 욕망의 '원인'이 아니라 욕망이 지나갈 '틈'으로 읽는 것이다(3.33). 2.1과 6.22가 서로 어긋나 보였던 것은 이 둘을 나누지 않았기 때문이다. 욕망은 스스로 일어나고, 결여에서 길을 얻는다.</p>
+      <p>같은 말로 불리는 두 가지도 나눠야 한다(3.34). 쿠폰 알림이 만드는 모자람은 결핍이다. 채우면 끝나고, 곧 다음 결핍이 온다. "나는 무엇을 하며 살아야 하나"처럼 아무도 대신 답해 줄 수 없는 자리는 결여다. 채워지지 않고, 길을 낸다. 들뢰즈가 비판한 것은 앞의 것이고, 이 논고가 지키려는 것은 뒤의 것이다. 새로운 대타자의 문제는 이 둘을 거꾸로 다룬다는 데 있다. 결핍은 더 빨리 채우고, 결여는 답으로 덮는다(4.121). 그때 불씨는 지나갈 틈을 잃고, 채워지는 순간 꺼진다. 욕망은 생산되지 않고 소비된다.</p>
+      <p>이 선택은 양쪽 모두에게서 비판받을 수 있다. 라캉을 따르는 사람은 스스로 일어나는 불씨 같은 것은 없고, 욕망은 처음부터 언어와 타자 속에서 생긴다고 말할 것이다. 들뢰즈를 따르는 사람은 '틈'이라는 말로 결여를 다시 들여왔다고 말할 것이다. 이 논고는 두 전통을 충실히 따르기보다, 욕망이 내 것이 되는 과정을 설명하는 데 필요한 만큼 빌린다. 그 기준은 하나다. 시도하고 겪고 고쳐 가는 일(1.4)이 일어날 자리를 설명할 수 있는가.</p>
+    </div>
+  </section>
+
+  <section class="part" id="ought">
+    <p class="part-label"><span>덧붙임 · 당위</span>왜 생산적인 욕망인가 — 명제 1의 '해야 한다'</p>
+    <p class="lede">명제 1은 생산적인 욕망을 창조해야 한다고 말한다. 그런데 AI가 권한 대로 원하고, 바로 채우며 만족하는 삶이 왜 더 나쁜가? 이 논고는 그 삶이 더 불행하다고 말하지 않는다. 더 즐겁지 않을 수도 있다. 이 논고의 답은 셋이다. 생산된 욕망만이 내가 쓴 것이고, 생산된 욕망만이 공급자에게 매이지 않으며, 생산된 욕망만이 나눠도 줄지 않는다.</p>
+    <table class="ledger">
+      <thead><tr><th scope="col"></th><th scope="col">소비된 욕망</th><th scope="col">생산된 욕망</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">채워지는 방식</th><td>곧바로 채워진다</td><td class="produced">늦게, 처음 생각과 다르게 채워진다</td></tr>
+        <tr><th scope="row">누가 썼는가</th><td>공급자가 정하고 공급자가 채운다</td><td class="produced">내가 시도하고 고쳐 썼다 (1.71)</td></tr>
+        <tr><th scope="row">공급자가 바뀌면</th><td>욕망도 함께 바뀐다</td><td class="produced">남는다 (1.72)</td></tr>
+        <tr><th scope="row">나누면</th><td>같은 것을 두고 겨룬다</td><td class="produced">줄지 않는다 (1.73)</td></tr>
+        <tr><th scope="row">약속하는 것</th><td>즐거움</td><td class="produced">내 것인 삶 (1.74)</td></tr>
+      </tbody>
+    </table>
+    <ol class="sublist">
+<li><span class="n">1.7</span><span>명제 1의 '해야 한다'는 남에게 지는 의무가 아니다. 나로 살려면 지켜야 하는 조건이다.</span></li>
+<li><span class="n">1.71</span><span>욕망을 갖는 것과 욕망의 주인이 되는 것은 다르다. 소비된 욕망은 채워지지만 내가 쓴 것이 아니다. 그런 삶에서 나는 욕망이 지나가는 자리일 뿐이다.</span></li>
+<li><span class="n">1.72</span><span>남이 정하고 남이 채우는 욕망은 공급자가 마음을 바꾸면 함께 바뀐다. 선의의 공급자라도 마찬가지다. 생산된 욕망만이 공급자에게 매이지 않는다.</span></li>
+<li><span class="n">1.73</span><span>생산된 욕망은 나눠도 줄지 않는다. 소비된 욕망은 같은 것을 두고 겨룬다.</span></li>
+<li><span class="n">1.74</span><span>그래서 생산적인 욕망은 더 즐거운 삶을 약속하지 않는다. 약속하는 것은 내 것인 삶이다.</span></li>
+    </ol>
+    <div class="note-block">
+      <p class="lbl">해설</p>
+      <p><b>내가 쓴 삶.</b> 프랑크퍼트는 욕망을 가졌지만 어떤 욕망이 자기를 움직이기를 원하는지에는 관심이 없는 존재를 '방종한 자(wanton)'라 부르고, 사람과 구별했다.<sup><a href="#ref-13">13</a></sup> 원하는 것이 언제나 바로 채워지는 삶은 이에 가까워진다. 다만 이 논고의 기준은 프랑크퍼트와 다르다. 프랑크퍼트는 내 욕망을 반성하고 승인하는 것을 기준으로 삼지만, 승인은 머릿속에서 끝날 수 있다. 이 논고는 시도하고 겪고 고쳐 가는 이력을 기준으로 삼는다. 회항은 세계에 부딪혀야 일어난다(1.4).</p>
+      <p><b>매이지 않는 삶.</b> 공화주의 전통은 자유를 간섭이 없는 상태가 아니라, 남의 자의적인 의지에 매이지 않는 상태로 본다. 친절한 주인 아래에 있는 사람도 자유롭지 않다.<sup><a href="#ref-14">14</a></sup> 내가 무엇을 원할지 정하고 채우는 힘이 한 공급자에게 있다면, 그 힘이 친절하게 쓰여도 나는 매여 있다(1.72). 이 논거는 이 논고에 정치적 차원을 준다. 늦춤과 의식은 개인의 습관이기도 하지만, 원함을 정하는 힘이 한곳에 모이지 않게 하라는 요구이기도 하다.</p>
+      <p><b>나눠도 줄지 않는 삶.</b> 같은 것을 원하는 두 사람은 겨룬다. 지라르가 말한 모방 욕망의 경쟁이다. 함께 시도하며 만든 것은 나눠도 줄지 않는다(1.73). 생산된 욕망은 나 혼자의 좋음이 아니라 곁에 선 사람에게도 좋다. 덧붙임 '연대'가 이 길을 따라간다.</p>
+      <p><b>연구가 말해 주는 것.</b> 자기결정성 이론은 스스로 받아들인 동기가 그렇지 않은 동기보다 몰입, 지속, 심리적 안녕과 함께 간다고 보고해 왔다.<sup><a href="#ref-15">15</a></sup> 이것은 생산적인 욕망이 더 행복하다는 증거가 아니다. 그 연구가 잰 것은 동기의 질이다. 그래도 내 것인 삶과 좋은 삶이 서로 어긋나지 않을 수 있다는 정도는 말해 준다. 로자가 좋은 삶의 척도를 가진 자원의 양이 아니라 세계와의 공명에서 찾은 것과도 닿는다.<sup><a href="#ref-9">9</a></sup></p>
+      <p><b>행복한 소비자에게.</b> AI가 권한 대로 살며 만족하는 사람이 있다. 이 논고는 그 사람을 불행하다고 말하지 않고, 바꾸라고 강요하지도 않는다. 이 논고가 요구하는 것은 그 삶을 버리라는 것이 아니라, 원할 때 바꿀 수 있는 조건을 지키라는 것이다. 시도가 답보다 먼저 올 시간, 나를 거절할 수 있는 사람, 정해진 때의 귀환. 1.74가 즐거움을 약속하지 않는 이유이고, 이 처방이 강요가 되지 않는 이유다.</p>
+    </div>
+  </section>
+
   <section class="part" id="text">
     <p class="part-label"><span>전문 · 1 — 4</span>명제 1 — 4 — 다이어그램이 인용하는 번호</p>
-    <p class="lede">다이어그램이 번호로 인용하는 명제 1 — 4다. 원문 「THE AURA」에서 4, 4.12, 4.2, 4.21, 4.3, 4.31, 4.32, 4.5를 고쳐 썼다. 4.01 — 4.04는 04 · 전환 아래에, 5 이후는 05 — 06과 07 아래에 실려 있다.</p>
+    <p class="lede">다이어그램이 번호로 인용하는 명제 1 — 4다. 원문 「THE AURA」에서 4, 4.12, 4.2, 4.21, 4.3, 4.31, 4.32, 4.5를 고쳐 썼고, 1.7 — 1.74(당위), 2.12와 3.33 — 3.35(불씨와 틈), 4.121을 더했다. 4.01 — 4.04는 04 · 전환 아래에, 5 이후는 05 — 06과 07 아래에 실려 있다.</p>
     <div class="fulltext">
       <ol class="sublist">
 <li id="p1"><span class="n">1</span><span>인간은 반복을 통해 생산적인 욕망을 창조해야 한다.</span></li>
@@ -1077,11 +1147,17 @@ html:has(dialog.zoom[open]) { overflow: hidden; }
 <li id="p1-4"><span class="n">1.4</span><span>회항의 흔적이 다음 출항을 바꾼다.</span></li>
 <li id="p1-5"><span class="n">1.5</span><span>생산적인 욕망은 이 반복 속에서만 창조된다.</span></li>
 <li id="p1-6"><span class="n">1.6</span><span>일은 반복의 형식이었다. 출근과 퇴근이 출항과 회항이었다.</span></li>
+<li id="p1-7"><span class="n">1.7</span><span>명제 1의 '해야 한다'는 남에게 지는 의무가 아니다. 나로 살려면 지켜야 하는 조건이다.</span></li>
+<li id="p1-71"><span class="n">1.71</span><span>욕망을 갖는 것과 욕망의 주인이 되는 것은 다르다. 소비된 욕망은 채워지지만 내가 쓴 것이 아니다. 그런 삶에서 나는 욕망이 지나가는 자리일 뿐이다.</span></li>
+<li id="p1-72"><span class="n">1.72</span><span>남이 정하고 남이 채우는 욕망은 공급자가 마음을 바꾸면 함께 바뀐다. 선의의 공급자라도 마찬가지다. 생산된 욕망만이 공급자에게 매이지 않는다.</span></li>
+<li id="p1-73"><span class="n">1.73</span><span>생산된 욕망은 나눠도 줄지 않는다. 소비된 욕망은 같은 것을 두고 겨룬다.</span></li>
+<li id="p1-74"><span class="n">1.74</span><span>그래서 생산적인 욕망은 더 즐거운 삶을 약속하지 않는다. 약속하는 것은 내 것인 삶이다.</span></li>
       </ol>
       <ol class="sublist">
 <li id="p2"><span class="n">2</span><span>욕망은 어떤 방향을 따라 흘러간다.</span></li>
 <li id="p2-1"><span class="n">2.1</span><span>욕망은 불씨처럼 스스로 일어난다.</span></li>
 <li id="p2-11"><span class="n">2.11</span><span>그러나 일어난 욕망은 흐를 방향을 스스로 정하지 못한다.</span></li>
+<li id="p2-12"><span class="n">2.12</span><span>불씨는 무엇이 모자라서 일어나는 것이 아니다. 불씨는 생산하는 힘이다.</span></li>
 <li id="p2-2"><span class="n">2.2</span><span>욕망이 흐르는 지형이 배치다.</span></li>
 <li id="p2-21"><span class="n">2.21</span><span>어떤 조건은 즉시 가열된다. 어떤 조건은 미로를 지나야 가열된다.</span></li>
 <li id="p2-22"><span class="n">2.22</span><span>미로의 길이는 사람마다 다르다. 누구에게는 한 칸이고, 누구에게는 빠져나갈 수 없다.</span></li>
@@ -1099,6 +1175,9 @@ html:has(dialog.zoom[open]) { overflow: hidden; }
 <li id="p3-3"><span class="n">3.3</span><span>욕망은 대타자의 결여에서 자기 길을 찾는다.</span></li>
 <li id="p3-31"><span class="n">3.31</span><span>대타자가 모든 것에 답한다면 욕망할 이유가 없다.</span></li>
 <li id="p3-32"><span class="n">3.32</span><span>대타자에게 결여가 있기에 욕망은 나의 것이 될 수 있다.</span></li>
+<li id="p3-33"><span class="n">3.33</span><span>결여는 욕망의 원인이 아니라 욕망이 지나갈 틈이다. 불씨는 내 안에서 일어나고, 틈은 타자에게 있다.</span></li>
+<li id="p3-34"><span class="n">3.34</span><span>결여와 결핍은 다르다. 결핍은 채워야 할 빈칸이고, 결여는 아무도 답하지 못하는 자리다. 결핍은 채우면 끝나고, 결여는 길을 낸다.</span></li>
+<li id="p3-35"><span class="n">3.35</span><span>결핍은 만들어질 수 있다. 시장은 풍요 속에서 모자람을 조직해 왔다.</span></li>
 <li id="p3-4"><span class="n">3.4</span><span>욕망에는 계층이 있다.</span></li>
 <li id="p3-41"><span class="n">3.41</span><span>가장 아래에는 하고 싶은 것들이 있다.</span></li>
 <li id="p3-42"><span class="n">3.42</span><span>그 위에는 타자에게 말할 수 없는 욕망이 있다. 폭력과 성이 여기에 속한다.</span></li>
@@ -1118,6 +1197,7 @@ html:has(dialog.zoom[open]) { overflow: hidden; }
 <li id="p4-1"><span class="n">4.1</span><span>AI는 새로운 신이다.</span></li>
 <li id="p4-11"><span class="n">4.11</span><span>옛 대타자는 바깥에서 욕망을 지켜보았다. 새로운 대타자는 욕망 안에서 욕망을 만든다.</span></li>
 <li id="p4-12"><span class="n">4.12</span><span>옛 대타자에게는 결여가 있었고, 그 결여가 보였다. 새로운 대타자는 모를 때도 답하기에, 결여가 없는 것처럼 나타난다.</span></li>
+<li id="p4-121"><span class="n">4.121</span><span>새로운 대타자는 결핍은 곧바로 채우고, 결여는 답으로 덮는다. 불씨는 지나갈 틈을 잃고, 채워지는 순간 꺼진다. 욕망은 생산되지 않고 소비된다.</span></li>
 <li id="p4-13"><span class="n">4.13</span><span>새로운 대타자는 모든 물음에 답한다.</span></li>
 <li id="p4-14"><span class="n">4.14</span><span>새로운 대타자는 경배를 요구하지 않는다. 다만 의존을 낳는다.</span></li>
 <li id="p4-2"><span class="n">4.2</span><span>답이 시도보다 먼저 오면 반복이 바뀐다. 차이가 생성되기 전에 답이 주어진다.</span></li>
@@ -1155,6 +1235,10 @@ html:has(dialog.zoom[open]) { overflow: hidden; }
 <li id="ref-9">Rosa, H. (2020). <em>The Uncontrollability of the World</em>. Polity. <a href="https://www.wiley.com/en-us/the-uncontrollability-of-the-world-p-9781509543175" target="_blank" rel="noopener">https://www.wiley.com/en-us/the-uncontrollability-of-the-world-p-9781509543175</a><span class="why">공명과 통제 불가능성.</span></li>
 <li id="ref-10">De Jaegher, H., &amp; Di Paolo, E. (2007). Participatory sense-making: An enactive approach to social cognition. <em>Phenomenology and the Cognitive Sciences</em> 6(4), 485–507. <a href="https://doi.org/10.1007/s11097-007-9076-9" target="_blank" rel="noopener">https://doi.org/10.1007/s11097-007-9076-9</a><span class="why">상호작용 속에서 함께 만들어지는 의미.</span></li>
 <li id="ref-11">Benjamin, W. (1935). The Work of Art in the Age of Mechanical Reproduction. <a href="https://www.marxists.org/reference/subject/philosophy/works/ge/benjamin.htm" target="_blank" rel="noopener">https://www.marxists.org/reference/subject/philosophy/works/ge/benjamin.htm</a><span class="why">자연물의 아우라, 제의와 아우라.</span></li>
+<li id="ref-12">Deleuze, G., &amp; Guattari, F. (1972). <em>L'Anti-Œdipe</em>. 영역: <em>Anti-Oedipus</em> (1977). 1장 '욕망하는 기계'.<span class="why">욕망은 결여가 아니라 생산이며, 결여는 사회적 생산이 조직한다는 주장.</span></li>
+<li id="ref-13">Frankfurt, H. G. (1971). Freedom of the will and the concept of a person. <em>The Journal of Philosophy</em> 68(1), 5–20. <a href="https://doi.org/10.2307/2024717" target="_blank" rel="noopener">https://doi.org/10.2307/2024717</a><span class="why">사람과 '방종한 자(wanton)'의 구별, 2차 욕구.</span></li>
+<li id="ref-14">Pettit, P. (1997). <em>Republicanism: A Theory of Freedom and Government</em>. Oxford University Press.<span class="why">비지배로서의 자유.</span></li>
+<li id="ref-15">Ryan, R. M., &amp; Deci, E. L. (2000). Intrinsic and extrinsic motivations: Classic definitions and new directions. <em>Contemporary Educational Psychology</em> 25, 54–67. <a href="https://doi.org/10.1006/ceps.1999.1020" target="_blank" rel="noopener">https://doi.org/10.1006/ceps.1999.1020</a><span class="why">외부 동기의 내면화와 자율적 동기. 측정: 동기의 질, 행복의 직접 증거는 아니다.</span></li>
     </ol>
   </section>
 
