@@ -109,6 +109,45 @@ html:has(dialog.zoom[open]) { overflow: hidden; }
 .zoom-body { flex: 1; overflow: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; padding: 12px 16px calc(24px + env(safe-area-inset-bottom, 0px)); }
 .zoom-body svg { width: 1080px; min-width: 0; max-width: none; }
 @media print { .zoom-btn { display: none; } }
+
+/* ── 장 나누기 ── */
+.chapnav { display: none; }
+body.paged .toc { display: none; }
+body.paged .chapnav { display: flex; position: sticky; top: 0; z-index: 20; gap: 0.3rem; overflow-x: auto; margin: 0.25rem -0.25rem 1.5rem; padding: 0.6rem 0.25rem; background: var(--color-paper); border-bottom: 1px solid rgba(45,49,66,0.12); scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.chapnav::-webkit-scrollbar { display: none; }
+.chapnav a { flex: none; display: inline-flex; align-items: baseline; gap: 0.4rem; font-size: 0.84rem; color: var(--color-muted); text-decoration: none; padding: 0.4rem 0.75rem; border-radius: 999px; border: 1px solid transparent; }
+.chapnav a span { font-family: var(--font-mono); font-size: 0.68rem; color: var(--color-soft); }
+.chapnav a:hover { color: var(--color-ink); }
+.chapnav a[aria-current="true"] { background: #fff; border-color: rgba(45,49,66,0.25); color: var(--color-ink); font-weight: 600; }
+.chapnav a[aria-current="true"] span { color: var(--color-accent); }
+body.paged .chapter { display: none; }
+body.paged .chapter.active { display: block; }
+body.paged .part { scroll-margin-top: 4.5rem; }
+.ch-head { padding-bottom: 1rem; border-bottom: 2px solid var(--color-ink); }
+.ch-no { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.16em; color: var(--color-accent); }
+.ch-head h2 { font-family: var(--font-serif); font-size: clamp(1.6rem, 2vw + 1rem, 2.2rem); font-weight: 400; line-height: 1.25; margin-top: 0.35rem; }
+.ch-k { font-size: 0.9rem; color: var(--color-muted); margin-top: 0.35rem; }
+.chapter .ch-head + .part { margin-top: 1.5rem; }
+.ch-index-h { margin-top: 2.5rem; font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.18em; color: var(--color-muted); }
+.ch-index { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: 0.75rem; margin-top: 0.9rem; }
+.ch-index a { display: block; height: 100%; background: #fff; border: 1px solid rgba(45,49,66,0.12); border-radius: 8px; padding: 0.9rem 1rem; text-decoration: none; color: var(--color-ink); }
+.ch-index a:hover { border-color: rgba(45,49,66,0.45); }
+.ch-index .no { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.12em; color: var(--color-accent); }
+.ch-index b { display: block; font-size: 1.02rem; font-weight: 600; margin: 0.3rem 0 0.25rem; }
+.ch-index .k { font-size: 0.84rem; line-height: 1.5; color: var(--color-muted); }
+.pager { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 3rem; padding-top: 1.25rem; border-top: 1px solid rgba(45,49,66,0.12); }
+.pager a { display: block; background: #fff; border: 1px solid rgba(45,49,66,0.15); border-radius: 8px; padding: 0.85rem 1rem; text-decoration: none; color: var(--color-ink); }
+.pager a:hover { border-color: rgba(45,49,66,0.45); }
+.pager small { display: block; font-size: 0.75rem; color: var(--color-soft); margin-bottom: 0.2rem; }
+.pager b { font-weight: 600; font-size: 0.98rem; }
+.pager .next { grid-column: 2; text-align: right; }
+.pager .count { grid-column: 1 / -1; text-align: center; font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.14em; color: var(--color-soft); }
+.fn-pop { position: absolute; z-index: 30; width: min(22rem, calc(100vw - 2rem)); background: #fff; border: 1px solid rgba(45,49,66,0.2); border-radius: 8px; box-shadow: 0 10px 28px -10px rgba(45,49,66,0.35); padding: 0.8rem 2.2rem 0.8rem 1rem; font-size: 0.84rem; line-height: 1.55; color: var(--color-muted); }
+.fn-pop a { color: var(--color-muted); overflow-wrap: anywhere; }
+.fn-pop .why { display: block; margin-top: 0.35rem; font-size: 0.8rem; color: var(--color-soft); }
+.fn-pop button { position: absolute; top: 0.4rem; right: 0.4rem; font: inherit; font-size: 0.85rem; line-height: 1; padding: 0.35rem 0.45rem; border: 0; background: none; color: var(--color-soft); cursor: pointer; }
+@media (max-width: 760px) { .pager { grid-template-columns: 1fr; } .pager .next { grid-column: 1; } }
+@media print { body.paged .chapter { display: block; } .chapnav, .pager, .ch-index, .ch-index-h, .fn-pop { display: none !important; } }
 </style>
 </head>
 <body>
@@ -1393,7 +1432,7 @@ html:has(dialog.zoom[open]) { overflow: hidden; }
   <section class="part refs" id="refs">
     <p class="part-label"><span>참고</span>참고 문헌 — 해설의 각주</p>
     <ol>
-<li id="ref-1">Bastani, H., Bastani, O., Sungu, A., Ge, H., Kabakcı, Ö., &amp; Mariman, R. (2025). Generative AI without guardrails ca<li id="ref-1">Bastani, H., Bastani, O., Sungu, A., Ge, H., Kabakcı, Ö., &amp; Mariman, R. (2025). Generative AI without guardrails can harm learning: Evidence from high school mathematics. <em>PNAS</em> 122. <a href="https://doi.org/10.1073/pnas.2422633122" target="_blank" rel="noopener">https://doi.org/10.1073/pnas.2422633122</a><span class="why">측정: 수학 연습·시험 성적과 학생의 자기 평가. 욕망 형성의 증거는 아니다.</span></li>
+<li id="ref-1">Bastani, H., Bastani, O., Sungu, A., Ge, H., Kabakcı, Ö., &amp; Mariman, R. (2025). Generative AI without guardrails can harm learning: Evidence from high school mathematics. <em>PNAS</em> 122. <a href="https://doi.org/10.1073/pnas.2422633122" target="_blank" rel="noopener">https://doi.org/10.1073/pnas.2422633122</a><span class="why">측정: 수학 연습·시험 성적과 학생의 자기 평가. 욕망 형성의 증거는 아니다.</span></li>
 <li id="ref-2">Krügel, S., Ostermaier, A., &amp; Uhl, M. (2023). ChatGPT's inconsistent moral advice influences users' judgment. <em>Scientific Reports</em> 13. <a href="https://doi.org/10.1038/s41598-023-31341-0" target="_blank" rel="noopener">https://doi.org/10.1038/s41598-023-31341-0</a><span class="why">측정: 트롤리 딜레마에서의 한 번의 도덕 판단.</span></li>
 <li id="ref-3">Salvi, F., Horta Ribeiro, M., Gallotti, R., &amp; West, R. (2025). On the conversational persuasiveness of GPT-4. <em>Nature Human Behaviour</em> 9, 1645–1653. 저자 정정(2026): https://doi.org/10.1038/s41562-026-02588-0 <a href="https://doi.org/10.1038/s41562-025-02194-6" target="_blank" rel="noopener">https://doi.org/10.1038/s41562-025-02194-6</a><span class="why">측정: 짧은 토론 직후의 동의 변화. 수치를 인용할 때는 정정본 기준.</span></li>
 <li id="ref-4">Matz, S. C., Kosinski, M., Nave, G., &amp; Stillwell, D. J. (2017). Psychological targeting as an effective approach to digital mass persuasion. <em>PNAS</em> 114. <a href="https://doi.org/10.1073/pnas.1710966114" target="_blank" rel="noopener">https://doi.org/10.1073/pnas.1710966114</a><span class="why">측정: 맞춤 광고에 대한 클릭과 구매. 효과 크기에 대한 비판도 있다.</span></li>
@@ -1407,7 +1446,13 @@ html:has(dialog.zoom[open]) { overflow: hidden; }
 <li id="ref-12">Benjamin, W. (1939). Über einige Motive bei Baudelaire. <em>Zeitschrift für Sozialforschung</em> 8. 영역: "On Some Motifs in Baudelaire".<span class="why">아우라의 경험과 되바라봄.</span></li>
 <li id="ref-13">Deleuze, G., &amp; Guattari, F. (1972). <em>L'Anti-Œdipe</em>. 영역: <em>Anti-Oedipus</em> (1977). 1장 '욕망하는 기계'.<span class="why">욕망은 결여가 아니라 생산이며, 결여는 사회적 생산이 조직한다는 주장.</span></li>
 <li id="ref-14">Pettit, P. (1997). <em>Republicanism: A Theory of Freedom and Government</em>. Oxford University Press.<span class="why">비지배로서의 자유.</span></li>
-생산적인 욕망을 창조해야 한다.</span></li>
+    </ol>
+  </section>
+
+  <section class="props" id="props">
+    <h2>주요 명제</h2>
+    <ol>
+<li><span class="n">1</span><span>인간은 반복을 통해 생산적인 욕망을 창조해야 한다.</span></li>
 <li><span class="n">2</span><span>욕망은 어떤 방향을 따라 흘러간다.</span></li>
 <li><span class="n">3</span><span>이 방향은 타자에 의해 정해진다.</span></li>
 <li class="focal"><span class="n">4</span><span>AI는 새로운 대타자가 되었고, 1~3의 질서를 바꾸고 있다. 생산적인 반복은 대체되고 욕망은 거세되며, 영혼은 행방불명이 된다(4.7, 4.9).</span></li>
@@ -1459,6 +1504,117 @@ html:has(dialog.zoom[open]) { overflow: hidden; }
   });
   document.getElementById("zoomClose").addEventListener("click", function () { dlg.close(); });
   dlg.addEventListener("close", function () { body.textContent = ""; if (last) last.focus({ preventScroll: true }); });
+})();
+</script>
+<script>
+(function () {
+  var frame = document.querySelector(".frame"); if (!frame) return;
+  var CH = [
+    { n: "들어가며", t: "무엇을 묻는가", k: "흐름 · 주요 명제", ids: ["flow", "props"] },
+    { n: "욕망의 구조", t: "욕망은 어떻게 내 것이 되는가", k: "명제 1 — 2 · 구조 · 층위", ids: ["structure", "layers"] },
+    { n: "새로운 대타자", t: "AI는 무엇을 바꾸었는가", k: "명제 3 — 4 · 질서 · 전환 · 붕괴", ids: ["order", "shift", "collapse"] },
+    { n: "진단", t: "거세, 복제, 행방불명", k: "4.7 — 4.94 · 욕망의 거세 · 원본 없는 욕망 · 영혼의 행방불명", ids: ["castration", "simulacra", "missing"] },
+    { n: "차선", t: "환대, 의식, 연대", k: "명제 5 — 6 · 고립과 차선", ids: ["remedy"] },
+    { n: "관계의 아우라", t: "다시 보이는 인간다움", k: "명제 7 · 연대", ids: ["aura", "solidarity"] },
+    { n: "덧붙임", t: "남겨 둔 물음들", k: "타자의 세 자리 · 불씨와 틈 · 왜 생산적인 욕망인가", ids: ["others", "source", "ought"] },
+    { n: "전문 · 참고", t: "명제 전문과 참고 문헌", k: "명제 1 — 4 전문 · 참고 문헌", ids: ["text", "refs"] }
+  ];
+  var used = {};
+  CH.forEach(function (c) { c.ids = c.ids.filter(function (id) { used[id] = 1; return document.getElementById(id); }); });
+  Array.prototype.forEach.call(frame.querySelectorAll(":scope > section[id]"), function (sec) {
+    if (!used[sec.id]) CH[CH.length - 2].ids.push(sec.id);
+  });
+  var label = function (i) { return i === 0 ? "00" : String(i).padStart(2, "0"); };
+  var lede = frame.querySelector(":scope > p.lede");
+  var toc = frame.querySelector(":scope > nav.toc");
+  var nav = document.createElement("nav");
+  nav.className = "chapnav"; nav.setAttribute("aria-label", "장");
+  CH.forEach(function (c, i) {
+    var a = document.createElement("a"); a.href = "#ch-" + i;
+    a.innerHTML = "<span>" + label(i) + "</span>"; a.appendChild(document.createTextNode(c.n));
+    nav.appendChild(a);
+  });
+  frame.insertBefore(nav, toc || lede);
+  var chapters = CH.map(function (c, i) {
+    var d = document.createElement("div"); d.className = "chapter"; d.id = "chapter-" + i;
+    if (i === 0) {
+      if (lede) d.appendChild(lede);
+    } else {
+      var h = document.createElement("header"); h.className = "ch-head";
+      h.innerHTML = '<p class="ch-no">' + i + "장 · " + c.n + "</p><h2></h2><p class=\"ch-k\"></p>";
+      h.querySelector("h2").textContent = c.t; h.querySelector(".ch-k").textContent = c.k;
+      d.appendChild(h);
+    }
+    c.ids.forEach(function (id) { d.appendChild(document.getElementById(id)); });
+    if (i === 0) {
+      var hh = document.createElement("p"); hh.className = "ch-index-h"; hh.textContent = "장별로 읽기";
+      var ol = document.createElement("ol"); ol.className = "ch-index";
+      CH.forEach(function (cc, j) {
+        if (!j) return;
+        var li = document.createElement("li");
+        li.innerHTML = '<a href="#ch-' + j + '"><span class="no">' + j + "장</span><b></b><span class=\"k\"></span></a>";
+        li.querySelector("b").textContent = cc.t; li.querySelector(".k").textContent = cc.k;
+        ol.appendChild(li);
+      });
+      d.appendChild(hh); d.appendChild(ol);
+    }
+    var pg = document.createElement("div"); pg.className = "pager";
+    if (i > 0) pg.innerHTML += '<a class="prev" href="#ch-' + (i - 1) + '"><small>← 이전 장</small><b></b></a>';
+    if (i < CH.length - 1) pg.innerHTML += '<a class="next" href="#ch-' + (i + 1) + '"><small>다음 장 →</small><b></b></a>';
+    if (pg.querySelector(".prev")) pg.querySelector(".prev b").textContent = CH[i - 1].n;
+    if (pg.querySelector(".next")) pg.querySelector(".next b").textContent = CH[i + 1].n;
+    pg.insertAdjacentHTML("beforeend", '<p class="count">' + label(i) + " / " + label(CH.length - 1) + "</p>");
+    d.appendChild(pg);
+    frame.appendChild(d);
+    return d;
+  });
+  var tail = frame.querySelector(":scope > a.meet"); if (tail) chapters[chapters.length - 1].appendChild(tail);
+  document.body.classList.add("paged");
+
+  var current = -1;
+  function show(i, target) {
+    if (i !== current) {
+      chapters.forEach(function (d, j) { d.classList.toggle("active", j === i); });
+      Array.prototype.forEach.call(nav.children, function (a, j) {
+        if (j === i) { a.setAttribute("aria-current", "true"); a.scrollIntoView({ block: "nearest", inline: "center" }); }
+        else a.removeAttribute("aria-current");
+      });
+      current = i;
+      document.title = (i ? CH[i].n + " · " : "") + "논고";
+    }
+    if (target) target.scrollIntoView();
+    else window.scrollTo(0, 0);
+  }
+  function route() {
+    var h = decodeURIComponent(location.hash.slice(1));
+    var m = /^ch-(\d+)$/.exec(h);
+    if (m && chapters[+m[1]]) return show(+m[1]);
+    var el = h && document.getElementById(h);
+    var ch = el && el.closest(".chapter");
+    if (ch) return show(chapters.indexOf(ch), el);
+    show(0);
+  }
+  window.addEventListener("hashchange", route);
+  route();
+  window.addEventListener("load", function () { if (/^#ch-\d+$/.test(location.hash)) window.scrollTo(0, 0); });
+
+  /* 각주: 참고 문헌 장으로 넘어가지 않고 그 자리에서 보여 준다 */
+  var pop = null;
+  function closePop() { if (pop) { pop.remove(); pop = null; } }
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest('sup a[href^="#ref-"]');
+    if (!a) { if (pop && !pop.contains(e.target)) closePop(); return; }
+    var li = document.getElementById(a.getAttribute("href").slice(1)); if (!li) return;
+    e.preventDefault(); closePop();
+    pop = document.createElement("div"); pop.className = "fn-pop"; pop.setAttribute("role", "note");
+    pop.innerHTML = '<button type="button" aria-label="닫기">✕</button>' + li.innerHTML;
+    pop.querySelector("button").addEventListener("click", closePop);
+    document.body.appendChild(pop);
+    var r = a.getBoundingClientRect(), w = pop.offsetWidth;
+    var left = Math.min(Math.max(8, r.left + window.scrollX - w / 2), window.scrollX + document.documentElement.clientWidth - w - 8);
+    pop.style.left = left + "px"; pop.style.top = (r.bottom + window.scrollY + 8) + "px";
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") closePop(); });
 })();
 </script>
 </body>

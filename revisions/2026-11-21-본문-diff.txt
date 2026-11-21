@@ -533,7 +533,7 @@
  4.1 AI는 새로운 신이다.
  4.11 옛 대타자는 바깥에서 욕망을 지켜보았다. 새로운 대타자는 욕망 안에서 욕망을 만든다.
  4.12 옛 대타자에게는 결여가 있었고, 그 결여가 보였다. 새로운 대타자는 모를 때도 답하기에, 결여가 없는 것처럼 나타난다.
-@@ -754,43 +812,51 @@
+@@ -754,18 +812,28 @@
  4.22 새로운 대타자는 일을 가져가며 반복을 가져간다.
  4.23 반복을 잃은 사람은 쉬는 것이 아니라 끊어진 것이다.
  4.3 방향이 바뀐다. 많은 조건이 즉시 가열된다. 미로를 지나지 않아도 닿는 길이 늘어난다.
@@ -564,9 +564,8 @@
 +4.94 인간은 사회적 존재다. 욕망은 타자에게서 방향을 얻고(명제 3), 아우라는 되바라보는 타자에게서만 나타난다(3.73). 그래서 행방불명된 영혼은 혼자서 찾을 수 없다.
  ######## refs
  참고 참고 문헌 — 해설의 각주
--Bastani, H., Bastani, O., Sungu, A., Ge, H., Kabakcı, Ö., & Mariman, R. (2025). Generative AI without guardrails can harm learning: Evidence from high school mathematics. PNAS 122. https://doi.org/10.1073/pnas.2422633122 측정: 수학 연습·시험 성적과 학생의 자기 평가. 욕망 형성의 증거는 아니다.
-+Bastani, H., Bastani, O., Sungu, A., Ge, H., Kabakcı, Ö., & Mariman, R. (2025). Generative AI without guardrails ca Bastani, H., Bastani, O., Sungu, A., Ge, H., Kabakcı, Ö., & Mariman, R. (2025). Generative AI without guardrails can harm learning: Evidence from high school mathematics. PNAS 122. https://doi.org/10.1073/pnas.2422633122 측정: 수학 연습·시험 성적과 학생의 자기 평가. 욕망 형성의 증거는 아니다.
- Krügel, S., Ostermaier, A., & Uhl, M. (2023). ChatGPT's inconsistent moral advice influences users' judgment. Scientific Reports 13. https://doi.org/10.1038/s41598-023-31341-0 측정: 트롤리 딜레마에서의 한 번의 도덕 판단.
+ Bastani, H., Bastani, O., Sungu, A., Ge, H., Kabakcı, Ö., & Mariman, R. (2025). Generative AI without guardrails can harm learning: Evidence from high school mathematics. PNAS 122. https://doi.org/10.1073/pnas.2422633122 측정: 수학 연습·시험 성적과 학생의 자기 평가. 욕망 형성의 증거는 아니다.
+@@ -773,24 +841,24 @@
  Salvi, F., Horta Ribeiro, M., Gallotti, R., & West, R. (2025). On the conversational persuasiveness of GPT-4. Nature Human Behaviour 9, 1645–1653. 저자 정정(2026): https://doi.org/10.1038/s41562-026-02588-0 https://doi.org/10.1038/s41562-025-02194-6 측정: 짧은 토론 직후의 동의 변화. 수치를 인용할 때는 정정본 기준.
  Matz, S. C., Kosinski, M., Nave, G., & Stillwell, D. J. (2017). Psychological targeting as an effective approach to digital mass persuasion. PNAS 114. https://doi.org/10.1073/pnas.1710966114 측정: 맞춤 광고에 대한 클릭과 구매. 효과 크기에 대한 비판도 있다.
  Stanford Encyclopedia of Philosophy, "Jacques Lacan." https://plato.stanford.edu/entries/lacan/ 대타자와 그 결여.
@@ -584,10 +583,9 @@
 -Frankfurt, H. G. (1971). Freedom of the will and the concept of a person. The Journal of Philosophy 68(1), 5–20. https://doi.org/10.2307/2024717 사람과 '방종한 자(wanton)'의 구별, 2차 욕구.
  Pettit, P. (1997). Republicanism: A Theory of Freedom and Government . Oxford University Press. 비지배로서의 자유.
 -Ryan, R. M., & Deci, E. L. (2000). Intrinsic and extrinsic motivations: Classic definitions and new directions. Contemporary Educational Psychology 25, 54–67. https://doi.org/10.1006/ceps.1999.1020 외부 동기의 내면화와 자율적 동기. 측정: 동기의 질, 행복의 직접 증거는 아니다.
--######## props
--주요 명제
--1 인간은 반복을 통해 생산적인 욕망을 창조해야 한다.
-+생산적인 욕망을 창조해야 한다.
+ ######## props
+ 주요 명제
+ 1 인간은 반복을 통해 생산적인 욕망을 창조해야 한다.
  2 욕망은 어떤 방향을 따라 흘러간다.
  3 이 방향은 타자에 의해 정해진다.
 -4 AI는 새로운 대타자의 자리에 들어서고 있다. 그 자리는 원함을 시험하고 고치는 곳이고, 그래서 1~3의 질서가 바뀐다.
